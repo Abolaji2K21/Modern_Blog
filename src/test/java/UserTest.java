@@ -3,19 +3,24 @@ import africa.semicolon.data.repositories.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-@SpringBootTest
-public class UserTest {
-    private UserRepository repository;
-    @Test
-    public void testThatRepositoryCanSave(){
-        User commenter = new User();
-        commenter.setId("commenter");
-        repository.save(commenter);
-        assertEquals(repository.count(),1);
 
+@SpringBootTest
+@Transactional
+public class UserTest {
+
+    @Autowired
+    private UserRepository repository;
+
+    @Test
+    public void testThatRepositoryCanSave() {
+        User user = new User();
+        user.setId("commenter");
+
+        repository.save(user);
+
+        assertEquals(1, repository.count());
     }
 }
