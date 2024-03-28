@@ -55,7 +55,7 @@ class UserServiceImplTest {
             userService.register(registerRequest);
 
         } catch (BigBlogException message){
-            assertEquals("username already exists", message.getMessage());
+            assertEquals("penisup already exists", message.getMessage());
 
         }
 
