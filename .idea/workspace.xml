@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1990bf40-2be8-488c-a8ec-b4a71196d267" name="Changes" comment="" />
+    <list default="true" id="1990bf40-2be8-488c-a8ec-b4a71196d267" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/requests/LoginUserRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/requests/LogoutUserRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/ApiResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/LoginUserResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/LogoutUserResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/africa/semicolon/services/UserServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/africa/semicolon/services/UserServiceImplTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,10 +48,17 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "HTTP Request.generated-requests | #3.executor": "Run",
+    "HTTP Request.generated-requests | #4.executor": "Run",
     "JUnit.UserTest.executor": "Run",
     "JUnit.UserTest.testThatRepositoryCanSave.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.MainApp.executor": "Run",
     "WebServerToolWindowFactoryState": "false",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
@@ -70,25 +89,15 @@
       <recent name="africa.semicolon.data.repositories" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserServiceImplTest">
-    <configuration name="UserRepositoryTest.testThatUserCanSave" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Morden_Blog" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="africa.semicolon.data.repositories.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="africa.semicolon.data.repositories" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.data.repositories.UserRepositoryTest" />
-      <option name="METHOD_NAME" value="testThatUserCanSave" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+  <component name="RunManager" selected="HTTP Request.generated-requests | #4">
+    <configuration name="generated-requests | #3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="3" requestIdentifier="#3" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="generated-requests | #4" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="4" requestIdentifier="#4" runType="Run single request">
+      <method v="2" />
     </configuration>
     <configuration name="UserServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Morden_Blog" />
+      <module name="Modern_Blog" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="africa.semicolon.services.*" />
@@ -102,24 +111,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServiceImplTest.testThatUserCanRegister" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Morden_Blog" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="africa.semicolon.services.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="africa.semicolon.services" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.UserServiceImplTest" />
-      <option name="METHOD_NAME" value="testThatUserCanRegister" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="UserServiceImplTest.testThatUserTriesToRegisterAgainAfterRegisteringTheFirstTime" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Morden_Blog" />
+      <module name="Modern_Blog" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="africa.semicolon.services.*" />
@@ -134,22 +127,39 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Modern_Blog" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Modern_Blog" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="Morden_Blog" />
-      <option name="PACKAGE_NAME" value="africa.semicolon" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.UserTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="africa.semicolon.MainApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="africa.semicolon.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="HTTP Request.generated-requests | #4" />
+        <item itemvalue="Spring Boot.MainApp" />
+        <item itemvalue="HTTP Request.generated-requests | #3" />
         <item itemvalue="JUnit.UserServiceImplTest" />
         <item itemvalue="JUnit.UserServiceImplTest.testThatUserTriesToRegisterAgainAfterRegisteringTheFirstTime" />
-        <item itemvalue="JUnit.UserServiceImplTest.testThatUserCanRegister" />
-        <item itemvalue="JUnit.UserRepositoryTest.testThatUserCanSave" />
-        <item itemvalue="JUnit.UserTest" />
       </list>
     </recent_temporary>
   </component>
@@ -162,7 +172,8 @@
       <option name="presentableId" value="Default" />
       <updated>1711427735186</updated>
       <workItem from="1711427736217" duration="11495000" />
-      <workItem from="1711524082889" duration="15953000" />
+      <workItem from="1711524082889" duration="19589000" />
+      <workItem from="1711630344485" duration="5222000" />
     </task>
     <servers />
   </component>
