@@ -41,7 +41,6 @@ public class UserServiceImpl implements UserService {
     public LoginUserResponse login(LoginUserRequest loginUserRequest) {
         String username = loginUserRequest.getUsername();
         String password = loginUserRequest.getPassword();
-
         User user = userRepository.findByUsername(username);
         if (user == null) {
             throw new UserNotFoundException("User with username " + username + " not found");
@@ -55,8 +54,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public LogoutUserResponse logout(LogoutUserResponse logoutRequest) {
-        return null;
+    public LogoutUserResponse logout(LogoutUserResponse logoutUserRequest) {
+        String username = logoutUserRequest.getUsername();
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
+            throw new UserNotFoundException("User with username " + username + " not found");
+        }
+        return new LogoutUserResponse();
+
     }
 
     @Override
