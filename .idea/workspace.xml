@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1990bf40-2be8-488c-a8ec-b4a71196d267" name="Changes" comment="STILL PUSHING">
-      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/controllers/PostController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/PostDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/ViewService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/ViewServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/model/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/model/View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/repositories/ViewRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/repositories/ViewRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/CommentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/PostService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/PostServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/application.properties" afterDir="false" />
-    </list>
+    <list default="true" id="1990bf40-2be8-488c-a8ec-b4a71196d267" name="Changes" comment="STILL PUSHING" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -201,7 +187,7 @@
       <workItem from="1711427736217" duration="11495000" />
       <workItem from="1711524082889" duration="19589000" />
       <workItem from="1711630344485" duration="14001000" />
-      <workItem from="1711795418917" duration="7425000" />
+      <workItem from="1711795418917" duration="7902000" />
     </task>
     <task id="LOCAL-00001" summary="STILL PUSHING">
       <option name="closed" value="true" />
@@ -283,7 +269,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711797915005</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="STILL PUSHING">
+      <option name="closed" value="true" />
+      <created>1711803338258</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1711803338258</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
