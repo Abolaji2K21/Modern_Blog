@@ -1,5 +1,50 @@
 POST http://localhost:9090/api/Modern_Blog/signUp
 Content-Type: application/json
+Content-Length: 21
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "firstname": ""
+}
+
+<> 2024-03-30T133835.500.json
+
+###
+
+POST http://localhost:9090/api/Modern_Blog/signUp
+Content-Type: application/json
+Content-Length: 21
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "firstname": ""
+}
+
+<> 2024-03-30T133821.500.json
+
+###
+
+POST http://localhost:9090/api/Modern_Blog/signUp
+Content-Type: application/json
+Content-Length: 21
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "firstname": ""
+}
+
+<> 2024-03-30T133340.500.json
+
+###
+
+POST http://localhost:9090/api/Modern_Blog/signUp
+Content-Type: application/json
 Content-Length: 94
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)

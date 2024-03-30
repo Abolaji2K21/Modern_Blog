@@ -3,8 +3,10 @@ package africa.semicolon.services;
 import africa.semicolon.BlogException.BigBlogException;
 import africa.semicolon.BlogException.PostNotFoundException;
 import africa.semicolon.BlogException.UserNotFoundException;
+import africa.semicolon.data.model.Comment;
 import africa.semicolon.data.model.Post;
 import africa.semicolon.data.model.User;
+import africa.semicolon.data.model.View;
 import africa.semicolon.data.repositories.PostRepository;
 import africa.semicolon.data.repositories.UserRepository;
 import africa.semicolon.dtos.requests.CreatePostRequest;
@@ -13,14 +15,15 @@ import africa.semicolon.dtos.requests.EditPostRequest;
 import africa.semicolon.dtos.responds.CreatePostResponse;
 import africa.semicolon.dtos.responds.DeletePostResponse;
 import africa.semicolon.dtos.responds.EditPostResponse;
+import africa.semicolon.dtos.responds.ActivitiesResponse;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -31,6 +34,12 @@ public class PostServiceImpl implements PostService {
 
     @Autowired
     private PostRepository postRepository;
+
+    @Autowired
+    private ViewServiceImpl viewService;
+
+    @Autowired
+    private CommentService commentService;
 
     @Override
     public CreatePostResponse createPostWith(CreatePostRequest createPostRequest) {
@@ -58,8 +67,50 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<Post> getAllPosts() {
-        return postRepository.findAll();
+    public ActivitiesResponse getPost(String postId, String username) {
+        User user = findUserBy(username);
+        Post post = postRepository.findById(postId).orElseThrow();
+        View view = null;
+        if (!user.getId().equals(post.getUserId())) {
+            view = viewService.addViewCount(postId, user.getId());
+        }
+        List<Comment> comments = commentService.getCommentBy(postId);
+        ActivitiesResponse activitiesResponse = new ActivitiesResponse();
+        activitiesResponse.setPost(post);
+        activitiesResponse.setView(view);
+        activitiesResponse.setComments(comments);
+        return activitiesResponse;
+
+    }
+
+    @Override
+    public List<ActivitiesResponse> getAllPosts() {
+        // stream api
+//        List<PostDto> postDtoList = new ArrayList<>();
+//        postRepository.findAll().forEach(post -> {
+//            PostDto postDto = new PostDto();
+//            List<Comment> comments = commentService.getCommentBy(post.getId());
+//            View view = viewService.getByPostId(post.getId());
+//            post.setComments(comments);
+//            postDto.setView(view);
+//            postDto.setPost(post);
+//            postDtoList.add(postDto);
+//        });
+//        return postDtoList;
+
+        // for loop
+        List<ActivitiesResponse> activitiesResponseList = new ArrayList<>();
+        List<Post> posts = postRepository.findAll();
+        for (Post post : posts) {
+            ActivitiesResponse activitiesResponse = new ActivitiesResponse();
+            List<Comment> comments = commentService.getCommentBy(post.getId());
+            View view = viewService.getByPostId(post.getId());
+            post.setComments(comments);
+            activitiesResponse.setView(view);
+            activitiesResponse.setPost(post);
+            activitiesResponseList.add(activitiesResponse);
+        }
+        return activitiesResponseList;
     }
 
     @Override

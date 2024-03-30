@@ -8,5 +8,4 @@ public class CreatePostResponse{
     private String title;
     private String content;
     private String dateCreated;
-    private String author;
 }

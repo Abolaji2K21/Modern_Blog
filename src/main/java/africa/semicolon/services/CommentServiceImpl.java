@@ -12,22 +12,33 @@ import africa.semicolon.dtos.requests.CreateCommentRequest;
 import africa.semicolon.dtos.responds.CreateCommentResponse;
 import africa.semicolon.dtos.responds.CreatePostResponse;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Service
 public class CommentServiceImpl implements CommentService {
 
+    @Autowired
     private CommentRepository commentRepository;
+
+    @Autowired
     private PostRepository postRepository;
+
+    @Autowired
     private UserRepository userRepository;
 
 
+    @Override
     public List<Comment> getCommentBy(String postId){
         Post post = postRepository.findById(postId).orElseThrow(()-> new PostNotFoundException("Post not found")) ;
         return  commentRepository.findByPostId(post.getId());
     }
+
+    @Override
     public List<Comment> getCommentsByUser(String postId, String userId){
         User user = userRepository.findById(userId).orElseThrow(()-> new UserNotFoundException("User not found"));
         Post post = postRepository.findById(postId).orElseThrow(()-> new PostNotFoundException("Post not found")) ;
@@ -47,6 +58,8 @@ public class CommentServiceImpl implements CommentService {
         BeanUtils.copyProperties(newComment,response);
         return response;
     }
+
+
 
     @Override
     public User findUserBy(String username) {

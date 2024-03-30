@@ -32,9 +32,9 @@ public class UserServiceImpl implements UserService {
         registerUserRequest.setUsername(username);
         validate(username.toLowerCase());
         User myUser = map(registerUserRequest);
-        RegisterUserResponse result = map(myUser);
         userRepository.save(myUser);
-        return result;
+
+        return map(myUser);
     }
 
     @Override
