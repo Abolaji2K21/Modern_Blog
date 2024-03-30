@@ -14,5 +14,5 @@ public class View {
     private String id;
     @DBRef
     private User viewer;
-    private LocalDateTime timeOfView;
+    private LocalDateTime timeOfView = LocalDateTime.now();
 }
