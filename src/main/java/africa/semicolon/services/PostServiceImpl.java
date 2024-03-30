@@ -1,5 +1,6 @@
 package africa.semicolon.services;
 
+import africa.semicolon.BlogException.BigBlogException;
 import africa.semicolon.BlogException.PostNotFoundException;
 import africa.semicolon.BlogException.UserNotFoundException;
 import africa.semicolon.data.model.Post;
@@ -81,7 +82,13 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public DeletePostResponse deletePostWith(DeletePostRequest deletePostRequest) {
-        return null;
+        User user = findUserBy(deletePostRequest.getUsername());
+        Post post = postRepository.findById(deletePostRequest.getPostId()).orElseThrow(() -> new PostNotFoundException("post not found"));
+        if (!post.getUserId().equals(user.getId())) {
+            throw new BigBlogException("You are not authorized to delete this post");
+        }
+        postRepository.delete(post);
+        return new DeletePostResponse();
     }
 
     @Override
