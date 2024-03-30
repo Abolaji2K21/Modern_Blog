@@ -17,6 +17,8 @@ public class Post {
     private String title;
     private String content;
     private LocalDateTime dateTimeCreated;
+    private String userId;
+    private LocalDateTime dateTimeUpdated;
     @DBRef
     private List<Comment> comments = new ArrayList<>();
     @DBRef

@@ -18,8 +18,8 @@ public class User {
     private String lastName;
     private String username;
     private String password;
-    @DBRef
-    private List<Post> posts = new ArrayList<>();
+//    @DBRef
+//    private List<Post> posts = new ArrayList<>();
     private LocalDateTime dateCreated = LocalDateTime.now();
 
 }

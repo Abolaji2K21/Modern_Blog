@@ -2,6 +2,8 @@ package africa.semicolon.utils;
 
 import africa.semicolon.data.model.User;
 import africa.semicolon.dtos.requests.RegisterUserRequest;
+import africa.semicolon.dtos.responds.LoginUserResponse;
+import africa.semicolon.dtos.responds.LogoutUserResponse;
 import africa.semicolon.dtos.responds.RegisterUserResponse;
 
 import java.time.format.DateTimeFormatter;
