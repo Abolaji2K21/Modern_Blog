@@ -50,8 +50,7 @@ public class UserServiceImpl implements UserService {
             throw new InvalidPassCodeException("Invalid password for user " + username);
         }
 
-        return new LoginUserResponse();
-    }
+        return new LoginUserResponse(user.getId(), user.getUsername());    }
 
     @Override
     public LogoutUserResponse logout(LogoutUserResponse logoutUserRequest) {

@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1990bf40-2be8-488c-a8ec-b4a71196d267" name="Changes" comment="STILL PUSHING" />
+    <list default="true" id="1990bf40-2be8-488c-a8ec-b4a71196d267" name="Changes" comment="STILL PUSHING">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/LoginUserResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/LoginUserResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/UserServiceImpl.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -161,7 +165,7 @@
       <updated>1711427735186</updated>
       <workItem from="1711427736217" duration="11495000" />
       <workItem from="1711524082889" duration="19589000" />
-      <workItem from="1711630344485" duration="5773000" />
+      <workItem from="1711630344485" duration="6212000" />
     </task>
     <task id="LOCAL-00001" summary="STILL PUSHING">
       <option name="closed" value="true" />
@@ -171,7 +175,23 @@
       <option name="project" value="LOCAL" />
       <updated>1711719642655</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="STILL PUSHING">
+      <option name="closed" value="true" />
+      <created>1711719784871</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1711719784871</updated>
+    </task>
+    <task id="LOCAL-00003" summary="STILL PUSHING">
+      <option name="closed" value="true" />
+      <created>1711719792221</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1711719792221</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
