@@ -40,7 +40,7 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public List<Comment> getCommentsByUser(String postId, String userId){
-        User user = userRepository.findById(userId).orElseThrow(()-> new UserNotFoundException("User not found"));
+//        User user = userRepository.findById(userId).orElseThrow(()-> new UserNotFoundException("User not found"));
         Post post = postRepository.findById(postId).orElseThrow(()-> new PostNotFoundException("Post not found")) ;
         return  commentRepository.findByPostId(post.getId());
     }

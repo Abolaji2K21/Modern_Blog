@@ -2,6 +2,7 @@ package africa.semicolon.services;
 
 import africa.semicolon.data.model.User;
 import africa.semicolon.dtos.requests.LoginUserRequest;
+import africa.semicolon.dtos.requests.LogoutUserRequest;
 import africa.semicolon.dtos.requests.RegisterUserRequest;
 import africa.semicolon.dtos.responds.LoginUserResponse;
 import africa.semicolon.dtos.responds.LogoutUserResponse;
@@ -13,6 +14,6 @@ public interface UserService {
 
     RegisterUserResponse register(RegisterUserRequest registerUserRequest);
     LoginUserResponse login(LoginUserRequest loginRequest);
-    LogoutUserResponse logout(LogoutUserResponse logoutRequest);
+    LogoutUserResponse logout(LogoutUserRequest logoutRequest);
     User findUserBy(String username);
 }

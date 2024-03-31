@@ -5,6 +5,7 @@ import africa.semicolon.BlogException.UserExistsException;
 import africa.semicolon.BlogException.UserNotFoundException;
 import africa.semicolon.data.model.User;
 import africa.semicolon.dtos.requests.LoginUserRequest;
+import africa.semicolon.dtos.requests.LogoutUserRequest;
 import africa.semicolon.dtos.requests.RegisterUserRequest;
 import africa.semicolon.dtos.responds.LoginUserResponse;
 import africa.semicolon.dtos.responds.LogoutUserResponse;
@@ -39,7 +40,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public LoginUserResponse login(LoginUserRequest loginUserRequest) {
-        String username = loginUserRequest.getUsername();
+        String username = loginUserRequest.getUsername().toLowerCase();
         String password = loginUserRequest.getPassword();
         User user = userRepository.findByUsername(username);
         if (user == null) {
@@ -50,17 +51,17 @@ public class UserServiceImpl implements UserService {
             throw new InvalidPassCodeException("Invalid password for user " + username);
         }
 
-        return new LoginUserResponse(user.getId(), user.getUsername());    }
+        return new LoginUserResponse(user.getId(), user.getUsername().toLowerCase());    }
 
     @Override
-    public LogoutUserResponse logout(LogoutUserResponse logoutUserRequest) {
-        String username = logoutUserRequest.getUsername();
+    public LogoutUserResponse logout(LogoutUserRequest logoutUserRequest) {
+        String username = logoutUserRequest.getUsername().toLowerCase();
         User user = userRepository.findByUsername(username);
         if (user == null) {
             throw new UserNotFoundException("User with username " + username + " not found");
+        } else {
+            return new LogoutUserResponse(user.getId(), user.getUsername());
         }
-        return new LogoutUserResponse();
-
     }
 
     @Override
