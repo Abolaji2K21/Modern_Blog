@@ -4,5 +4,5 @@ import lombok.Data;
 
 @Data
 public class DeletePostResponse {
-    private String postId;
+    private String CommentId;
 }

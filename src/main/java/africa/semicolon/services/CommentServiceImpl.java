@@ -12,10 +12,7 @@ import africa.semicolon.data.repositories.UserRepository;
 import africa.semicolon.dtos.requests.CreateCommentRequest;
 import africa.semicolon.dtos.requests.DeleteCommentRequest;
 import africa.semicolon.dtos.requests.EditCommentRequest;
-import africa.semicolon.dtos.responds.CreateCommentResponse;
-import africa.semicolon.dtos.responds.CreatePostResponse;
-import africa.semicolon.dtos.responds.DeleteCommentResponse;
-import africa.semicolon.dtos.responds.EditCommentResponse;
+import africa.semicolon.dtos.responds.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
@@ -83,9 +80,19 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public DeleteCommentResponse deleteCommentWith(DeleteCommentRequest deleteCommentRequest) {
-        return null;
-    }
+        User user = findUserBy(deleteCommentRequest.getUsername());
+        Comment comment = commentRepository.findById(deleteCommentRequest.getCommentId())
+                .orElseThrow(() -> new BigBlogException("Comment not found"));
 
+        if (!user.getId().equals(comment.getUserId())) {
+            throw new UserNotFoundException("You are not authorized to delete this post");
+        }
+        Post post = comment.getPost();
+        post.getComments().remove(comment);
+        postRepository.save(post);
+        commentRepository.delete(comment);
+        return new DeleteCommentResponse();
+    }
 
     @Override
     public User findUserBy(String username) {

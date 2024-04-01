@@ -11,6 +11,8 @@ public class Comment {
     @Id
     private String id;
     private String userId;
+    @DBRef
+    private Post post;
     private String comment;
     private String postId;
 }
