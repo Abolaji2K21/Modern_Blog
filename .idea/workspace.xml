@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1990bf40-2be8-488c-a8ec-b4a71196d267" name="Changes" comment="UserTestDone(9am pushing)">
+    <list default="true" id="1990bf40-2be8-488c-a8ec-b4a71196d267" name="Changes" comment="UserTestDone(12pm HungerTest)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/PostServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/africa/semicolon/services/PostServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/africa/semicolon/services/PostServiceImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,10 +42,16 @@
     "HTTP Request.generated-requests | #3.executor": "Run",
     "HTTP Request.generated-requests | #4.executor": "Run",
     "JUnit.PostServiceImplTest.executor": "Run",
+    "JUnit.PostServiceImplTest.testThatAfterSetupAnotherUserCantEditAnotherUserCreatedPost.executor": "Run",
     "JUnit.PostServiceImplTest.testThatAfterSetupUserCanCreatAPost.executor": "Run",
     "JUnit.PostServiceImplTest.testThatAfterSetupUserCanCreateAPost.executor": "Run",
+    "JUnit.PostServiceImplTest.testThatAfterSetupUserCanCreatePostWithEmptyContent.executor": "Run",
     "JUnit.PostServiceImplTest.testThatAfterSetupUserCanDeleteACreatedPost.executor": "Run",
     "JUnit.PostServiceImplTest.testThatAfterSetupUserCanEditACreatedPost.executor": "Run",
+    "JUnit.PostServiceImplTest.testThatAfterSetupUserCantEditANonCreatedPost.executor": "Run",
+    "JUnit.PostServiceImplTest.testThatAfterSetupUserPostCantBeDeletedByANonRegisterUser.executor": "Run",
+    "JUnit.PostServiceImplTest.testThatAfterSetupUserPostCantBeDeletedByARegisterUser.executor": "Run",
+    "JUnit.PostServiceImplTest.testThatAfterSetupUserPostCantBeDeletedByAnotherUser.executor": "Run",
     "JUnit.UserServiceImplTest.executor": "Run",
     "JUnit.UserServiceImplTest.testThatICanNotLoginIfIDontRegister.executor": "Run",
     "JUnit.UserServiceImplTest.testThatICantLogoutIfIDontLogin.executor": "Run",
@@ -96,7 +101,7 @@
       <recent name="africa.semicolon.data.repositories" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PostServiceImplTest.testThatAfterSetupUserCanCreatePostWithEmptyContent">
+  <component name="RunManager" selected="JUnit.PostServiceImplTest.testThatAfterSetupUserCantEditANonCreatedPost">
     <configuration name="generated-requests | #4" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="4" requestIdentifier="#4" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -115,7 +120,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PostServiceImplTest.testThatAfterSetupUserCanCreatAPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PostServiceImplTest.testThatAfterSetupAnotherUserCantEditAnotherUserCreatedPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Morden_Blog" />
       <extension name="coverage">
         <pattern>
@@ -125,39 +130,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="africa.semicolon.services" />
       <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.PostServiceImplTest" />
-      <option name="METHOD_NAME" value="testThatAfterSetupUserCanCreatAPost" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PostServiceImplTest.testThatAfterSetupUserCanCreatePostWithEmptyContent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Morden_Blog" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="africa.semicolon.services.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="africa.semicolon.services" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.PostServiceImplTest" />
-      <option name="METHOD_NAME" value="testThatAfterSetupUserCanCreatePostWithEmptyContent" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PostServiceImplTest.testThatAfterSetupUserCanDeleteACreatedPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Morden_Blog" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="africa.semicolon.services.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="africa.semicolon.services" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.PostServiceImplTest" />
-      <option name="METHOD_NAME" value="testThatAfterSetupUserCanDeleteACreatedPost" />
+      <option name="METHOD_NAME" value="testThatAfterSetupAnotherUserCantEditAnotherUserCreatedPost" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -179,6 +152,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PostServiceImplTest.testThatAfterSetupUserCantEditANonCreatedPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Morden_Blog" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="africa.semicolon.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="africa.semicolon.services" />
+      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.PostServiceImplTest" />
+      <option name="METHOD_NAME" value="testThatAfterSetupUserCantEditANonCreatedPost" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PostServiceImplTest.testThatAfterSetupUserPostCantBeDeletedByARegisterUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Morden_Blog" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="africa.semicolon.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="africa.semicolon.services" />
+      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.PostServiceImplTest" />
+      <option name="METHOD_NAME" value="testThatAfterSetupUserPostCantBeDeletedByARegisterUser" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MainApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="Morden_Blog" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="africa.semicolon.MainApp" />
@@ -194,11 +199,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PostServiceImplTest.testThatAfterSetupUserCanCreatePostWithEmptyContent" />
-        <item itemvalue="JUnit.PostServiceImplTest.testThatAfterSetupUserCanDeleteACreatedPost" />
+        <item itemvalue="JUnit.PostServiceImplTest.testThatAfterSetupUserCantEditANonCreatedPost" />
+        <item itemvalue="JUnit.PostServiceImplTest.testThatAfterSetupAnotherUserCantEditAnotherUserCreatedPost" />
         <item itemvalue="JUnit.PostServiceImplTest.testThatAfterSetupUserCanEditACreatedPost" />
         <item itemvalue="JUnit.PostServiceImplTest" />
-        <item itemvalue="JUnit.PostServiceImplTest.testThatAfterSetupUserCanCreatAPost" />
+        <item itemvalue="JUnit.PostServiceImplTest.testThatAfterSetupUserPostCantBeDeletedByARegisterUser" />
       </list>
     </recent_temporary>
   </component>
@@ -216,7 +221,7 @@
       <workItem from="1711795418917" duration="7902000" />
       <workItem from="1711841654557" duration="13000" />
       <workItem from="1711841710663" duration="2045000" />
-      <workItem from="1711844079589" duration="12831000" />
+      <workItem from="1711844079589" duration="15518000" />
     </task>
     <task id="LOCAL-00001" summary="STILL PUSHING">
       <option name="closed" value="true" />
@@ -338,7 +343,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711959006180</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="UserTestDone(11am HungerTest)">
+      <option name="closed" value="true" />
+      <created>1711966429100</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1711966429100</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -348,6 +361,8 @@
     <MESSAGE value="STILL PUSHING" />
     <MESSAGE value="UserTestDone(I they code for church)" />
     <MESSAGE value="UserTestDone(9am pushing)" />
-    <option name="LAST_COMMIT_MESSAGE" value="UserTestDone(9am pushing)" />
+    <MESSAGE value="UserTestDone(11am HungerTest)" />
+    <MESSAGE value="UserTestDone(12pm HungerTest)" />
+    <option name="LAST_COMMIT_MESSAGE" value="UserTestDone(12pm HungerTest)" />
   </component>
 </project>

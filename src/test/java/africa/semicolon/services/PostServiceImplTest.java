@@ -1,5 +1,6 @@
 package africa.semicolon.services;
 
+import africa.semicolon.BlogException.BigBlogException;
 import africa.semicolon.data.model.Post;
 import africa.semicolon.data.model.User;
 import africa.semicolon.data.repositories.PostRepository;
@@ -141,6 +142,77 @@ class PostServiceImplTest {
     }
 
     @Test
+    void testThatAfterSetupUserCantEditANonCreatedPost() {
+        assertTrue(userRepository.existsByUsername("penisup"));
+
+        CreatePostRequest createPostRequest = new CreatePostRequest();
+        createPostRequest.setUsername("penisup");
+        createPostRequest.setTitle("On a Monday Morning 4am PenIsStillUp");
+        createPostRequest.setContent("You Dont Want To Even Know");
+        CreatePostResponse createPostResponse = postService.createPostWith(createPostRequest);
+
+        EditPostRequest editPostRequest = new EditPostRequest();
+        editPostRequest.setUsername("penisup");
+        editPostRequest.setPostId("nonExistingPostId");
+        editPostRequest.setTitle("Edited Title");
+        editPostRequest.setContent("Edited Content");
+
+        try{
+            postService.editPostWith(editPostRequest);
+        } catch (BigBlogException message){
+            assertEquals("post not found", message.getMessage());
+
+        }
+        assertThat(userRepository.findByUsername("penisup").getPosts().size(), is(1));
+
+
+    }
+
+    @Test
+    void testThatAfterSetupAnotherUserCantEditAnotherUserCreatedPost() {
+        assertTrue(userRepository.existsByUsername("penisup"));
+
+        CreatePostRequest createPostRequest = new CreatePostRequest();
+        createPostRequest.setUsername("penisup");
+        createPostRequest.setTitle("On a Monday Morning 4am PenIsStillUp");
+        createPostRequest.setContent("You Dont Want To Even Know");
+        CreatePostResponse createPostResponse = postService.createPostWith(createPostRequest);
+
+        RegisterUserRequest registerRequest = new RegisterUserRequest();
+        registerRequest.setFirstname("PenIs");
+        registerRequest.setLastname("Dowp");
+        registerRequest.setUsername("PenIsDown");
+        registerRequest.setPassword("NoHoles");
+        userService.register(registerRequest);
+
+        LoginUserRequest loginRequest = new LoginUserRequest();
+        loginRequest.setUsername("PenIsDown");
+        loginRequest.setPassword("NoHoles");
+        LoginUserResponse loginResponse = userService.login(loginRequest);
+        assertThat(loginResponse.getUsername(), is("penisdown"));
+        assertTrue(userRepository.existsByUsername("penisdown"));
+
+
+        EditPostRequest editPostRequest = new EditPostRequest();
+        editPostRequest.setUsername("penisdown");
+        editPostRequest.setPostId(createPostResponse.getPostId());
+        editPostRequest.setTitle("Edited Title");
+        editPostRequest.setContent("Edited Content");
+
+        try{
+            postService.editPostWith(editPostRequest);
+        } catch (BigBlogException message){
+            assertEquals("Post does not belong to user", message.getMessage());
+
+        }
+        assertThat(userRepository.findByUsername("penisup").getPosts().size(), is(1));
+        assertThat(userRepository.findByUsername("penisdown").getPosts().size(), is(0));
+
+
+    }
+
+
+    @Test
     void testThatAfterSetupUserCanDeleteACreatedPost() {
         assertTrue(userRepository.existsByUsername("penisup"));
 
@@ -164,8 +236,65 @@ class PostServiceImplTest {
 
 
     @Test
-    void testThatAfterSetupUserCanGetHisCreatedPost() {
+    void testThatAfterSetupUserPostCantBeDeletedByARegisterUser() {
+        assertTrue(userRepository.existsByUsername("penisup"));
+
+        CreatePostRequest createPostRequest = new CreatePostRequest();
+        createPostRequest.setUsername("penisup");
+        createPostRequest.setTitle("On a Monday Morning 4am PenIsStillUp");
+        createPostRequest.setContent("You Dont Want To Even Know");
+        CreatePostResponse createPostResponse = postService.createPostWith(createPostRequest);
+        assertThat(userRepository.findByUsername("penisup").getPosts().size(), is(1));
+
+        RegisterUserRequest registerRequest = new RegisterUserRequest();
+        registerRequest.setFirstname("PenIs");
+        registerRequest.setLastname("Dowp");
+        registerRequest.setUsername("PenIsDown");
+        registerRequest.setPassword("NoHoles");
+        userService.register(registerRequest);
+
+        LoginUserRequest loginRequest = new LoginUserRequest();
+        loginRequest.setUsername("PenIsDown");
+        loginRequest.setPassword("NoHoles");
+        LoginUserResponse loginResponse = userService.login(loginRequest);
+        assertThat(loginResponse.getUsername(), is("penisdown"));
+
+        DeletePostRequest deletePostRequest = new DeletePostRequest();
+        deletePostRequest.setUsername("penisdown");
+        deletePostRequest.setPostId(createPostResponse.getPostId());
+            try{
+                postService.deletePostWith(deletePostRequest);
+            } catch (BigBlogException message){
+                assertEquals("You are not authorized to delete this post", message.getMessage());
+
+            }
+        assertThat(userRepository.findByUsername("penisup").getPosts().size(), is(1));
 
     }
+
+    @Test
+    void testThatAfterSetupUserPostCantBeDeletedByANonRegisterUser() {
+        assertTrue(userRepository.existsByUsername("penisup"));
+
+        CreatePostRequest createPostRequest = new CreatePostRequest();
+        createPostRequest.setUsername("penisup");
+        createPostRequest.setTitle("On a Monday Morning 4am PenIsStillUp");
+        createPostRequest.setContent("You Dont Want To Even Know");
+        CreatePostResponse createPostResponse = postService.createPostWith(createPostRequest);
+        assertThat(userRepository.findByUsername("penisup").getPosts().size(), is(1));
+
+        DeletePostRequest deletePostRequest = new DeletePostRequest();
+        deletePostRequest.setUsername("penisdown");
+        deletePostRequest.setPostId(createPostResponse.getPostId());
+        try{
+            postService.deletePostWith(deletePostRequest);
+        } catch (BigBlogException message){
+            assertEquals("User with username penisdown not found", message.getMessage());
+
+        }
+        assertThat(userRepository.findByUsername("penisup").getPosts().size(), is(1));
+
+    }
+
 
 }
