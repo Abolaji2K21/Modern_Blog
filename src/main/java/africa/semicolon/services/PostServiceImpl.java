@@ -142,7 +142,7 @@ public class PostServiceImpl implements PostService {
             throw new BigBlogException("You are not authorized to delete this post");
         }
         postRepository.delete(post);
-//        user.getPosts().remove(post);
+        user.getPosts().remove(post);
         userRepository.save(user);
         return new DeletePostResponse();
     }
