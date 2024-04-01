@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1990bf40-2be8-488c-a8ec-b4a71196d267" name="Changes" comment="STILL PUSHING">
+    <list default="true" id="1990bf40-2be8-488c-a8ec-b4a71196d267" name="Changes" comment="UserTestDone(I they code for church)">
+      <change afterPath="$PROJECT_DIR$/src/test/java/africa/semicolon/services/PostServiceImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/LoginUserResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/LoginUserResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/LogoutUserResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/LogoutUserResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/CommentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/PostServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/africa/semicolon/services/UserServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/africa/semicolon/services/UserServiceImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,9 +20,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -47,12 +45,18 @@
   "keyToString": {
     "HTTP Request.generated-requests | #3.executor": "Run",
     "HTTP Request.generated-requests | #4.executor": "Run",
+    "JUnit.PostServiceImplTest.executor": "Run",
+    "JUnit.PostServiceImplTest.testThatAfterSetupUserCanCreatAPost.executor": "Run",
+    "JUnit.PostServiceImplTest.testThatAfterSetupUserCanCreateAPost.executor": "Run",
+    "JUnit.PostServiceImplTest.testThatAfterSetupUserCanDeleteACreatedPost.executor": "Run",
+    "JUnit.PostServiceImplTest.testThatAfterSetupUserCanEditACreatedPost.executor": "Run",
     "JUnit.UserServiceImplTest.executor": "Run",
     "JUnit.UserServiceImplTest.testThatICanNotLoginIfIDontRegister.executor": "Run",
     "JUnit.UserServiceImplTest.testThatICantLogoutIfIDontLogin.executor": "Run",
     "JUnit.UserServiceImplTest.testThatUserCanLoginAfterLoginSuccessfully.executor": "Run",
     "JUnit.UserServiceImplTest.testThatUserCanLoginAfterRegistration.executor": "Run",
     "JUnit.UserServiceImplTest.testThatUserCanLoginAndLogoutSuccessfully.executor": "Run",
+    "JUnit.UserServiceImplTest.testThatUserCannotLoginWithWrongPasscodeAfterRegistration.executor": "Run",
     "JUnit.UserTest.executor": "Run",
     "JUnit.UserTest.testThatRepositoryCanSave.executor": "Run",
     "RequestMappingsPanelOrder0": "0",
@@ -95,11 +99,11 @@
       <recent name="africa.semicolon.data.repositories" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserServiceImplTest">
+  <component name="RunManager" selected="JUnit.PostServiceImplTest.testThatAfterSetupUserCanDeleteACreatedPost">
     <configuration name="generated-requests | #4" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="4" requestIdentifier="#4" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="UserServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PostServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Morden_Blog" />
       <extension name="coverage">
         <pattern>
@@ -108,13 +112,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="africa.semicolon.services" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.UserServiceImplTest" />
+      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.PostServiceImplTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServiceImplTest.testThatICanNotLoginIfIDontRegister" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PostServiceImplTest.testThatAfterSetupUserCanCreatAPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Morden_Blog" />
       <extension name="coverage">
         <pattern>
@@ -123,14 +127,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="africa.semicolon.services" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.UserServiceImplTest" />
-      <option name="METHOD_NAME" value="testThatICanNotLoginIfIDontRegister" />
+      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.PostServiceImplTest" />
+      <option name="METHOD_NAME" value="testThatAfterSetupUserCanCreatAPost" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServiceImplTest.testThatICantLogoutIfIDontLogin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PostServiceImplTest.testThatAfterSetupUserCanCreateAPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Morden_Blog" />
       <extension name="coverage">
         <pattern>
@@ -139,14 +143,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="africa.semicolon.services" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.UserServiceImplTest" />
-      <option name="METHOD_NAME" value="testThatICantLogoutIfIDontLogin" />
+      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.PostServiceImplTest" />
+      <option name="METHOD_NAME" value="testThatAfterSetupUserCanCreateAPost" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServiceImplTest.testThatUserCanLoginAfterLoginSuccessfully" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PostServiceImplTest.testThatAfterSetupUserCanDeleteACreatedPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Morden_Blog" />
       <extension name="coverage">
         <pattern>
@@ -155,14 +159,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="africa.semicolon.services" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.UserServiceImplTest" />
-      <option name="METHOD_NAME" value="testThatUserCanLoginAfterLoginSuccessfully" />
+      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.PostServiceImplTest" />
+      <option name="METHOD_NAME" value="testThatAfterSetupUserCanDeleteACreatedPost" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServiceImplTest.testThatUserCanLoginAndLogoutSuccessfully" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PostServiceImplTest.testThatAfterSetupUserCanEditACreatedPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Morden_Blog" />
       <extension name="coverage">
         <pattern>
@@ -171,8 +175,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="africa.semicolon.services" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.UserServiceImplTest" />
-      <option name="METHOD_NAME" value="testThatUserCanLoginAndLogoutSuccessfully" />
+      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.PostServiceImplTest" />
+      <option name="METHOD_NAME" value="testThatAfterSetupUserCanEditACreatedPost" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -193,11 +197,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserServiceImplTest" />
-        <item itemvalue="JUnit.UserServiceImplTest.testThatICantLogoutIfIDontLogin" />
-        <item itemvalue="JUnit.UserServiceImplTest.testThatICanNotLoginIfIDontRegister" />
-        <item itemvalue="JUnit.UserServiceImplTest.testThatUserCanLoginAndLogoutSuccessfully" />
-        <item itemvalue="JUnit.UserServiceImplTest.testThatUserCanLoginAfterLoginSuccessfully" />
+        <item itemvalue="JUnit.PostServiceImplTest.testThatAfterSetupUserCanDeleteACreatedPost" />
+        <item itemvalue="JUnit.PostServiceImplTest.testThatAfterSetupUserCanEditACreatedPost" />
+        <item itemvalue="JUnit.PostServiceImplTest" />
+        <item itemvalue="JUnit.PostServiceImplTest.testThatAfterSetupUserCanCreatAPost" />
+        <item itemvalue="JUnit.PostServiceImplTest.testThatAfterSetupUserCanCreateAPost" />
       </list>
     </recent_temporary>
   </component>
@@ -215,7 +219,7 @@
       <workItem from="1711795418917" duration="7902000" />
       <workItem from="1711841654557" duration="13000" />
       <workItem from="1711841710663" duration="2045000" />
-      <workItem from="1711844079589" duration="1309000" />
+      <workItem from="1711844079589" duration="5480000" />
     </task>
     <task id="LOCAL-00001" summary="STILL PUSHING">
       <option name="closed" value="true" />
@@ -305,7 +309,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711803338258</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="UserTestDone(I they code for church)">
+      <option name="closed" value="true" />
+      <created>1711873663606</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1711873663606</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -313,6 +325,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="STILL PUSHING" />
-    <option name="LAST_COMMIT_MESSAGE" value="STILL PUSHING" />
+    <MESSAGE value="UserTestDone(I they code for church)" />
+    <option name="LAST_COMMIT_MESSAGE" value="UserTestDone(I they code for church)" />
   </component>
 </project>

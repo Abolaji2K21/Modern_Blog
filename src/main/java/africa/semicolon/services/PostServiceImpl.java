@@ -51,6 +51,9 @@ public class PostServiceImpl implements PostService {
         newPost.setUserId(foundUser.getId());
 
         postRepository.save(newPost);
+        foundUser.getPosts().add(newPost);
+        userRepository.save(foundUser);
+
 
         CreatePostResponse response = new CreatePostResponse();
         BeanUtils.copyProperties(newPost, response);
@@ -139,6 +142,8 @@ public class PostServiceImpl implements PostService {
             throw new BigBlogException("You are not authorized to delete this post");
         }
         postRepository.delete(post);
+        user.getPosts().remove(post);
+        userRepository.save(user);
         return new DeletePostResponse();
     }
 

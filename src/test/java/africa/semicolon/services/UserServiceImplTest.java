@@ -142,6 +142,30 @@ class UserServiceImplTest {
         assertThat(userRepository.count(), is(0L));
     }
 
+    @Test
+    void testThatUserCannotLoginWithWrongPasscodeAfterRegistration(){
+        RegisterUserRequest registerRequest = new RegisterUserRequest();
+        registerRequest.setFirstname("PenIs");
+        registerRequest.setLastname("Up");
+        registerRequest.setUsername("PenIsUp");
+        registerRequest.setPassword("Holes");
+        userService.register(registerRequest);
+        assertThat(userRepository.count(), is(1L));
+
+        LoginUserRequest loginRequest = new LoginUserRequest();
+        loginRequest.setUsername("PenIsUp");
+        loginRequest.setPassword("WrongHole");
+
+        try {
+            userService.login(loginRequest);
+        } catch (BigBlogException message){
+            assertEquals("Invalid password for user penisup", message.getMessage());
+
+        }
+
+        assertThat(userRepository.count(), is(1L));
+
+    }
 
 
 
