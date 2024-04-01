@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1990bf40-2be8-488c-a8ec-b4a71196d267" name="Changes" comment="UserTestDone(I they code for church)">
-      <change afterPath="$PROJECT_DIR$/src/test/java/africa/semicolon/services/PostServiceImplTest.java" afterDir="false" />
+    <list default="true" id="1990bf40-2be8-488c-a8ec-b4a71196d267" name="Changes" comment="UserTestDone(9am pushing)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/PostServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/africa/semicolon/services/UserServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/africa/semicolon/services/UserServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/africa/semicolon/services/PostServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/africa/semicolon/services/PostServiceImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +96,7 @@
       <recent name="africa.semicolon.data.repositories" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PostServiceImplTest.testThatAfterSetupUserCanDeleteACreatedPost">
+  <component name="RunManager" selected="JUnit.PostServiceImplTest.testThatAfterSetupUserCanCreatePostWithEmptyContent">
     <configuration name="generated-requests | #4" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="4" requestIdentifier="#4" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -134,7 +131,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PostServiceImplTest.testThatAfterSetupUserCanCreateAPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PostServiceImplTest.testThatAfterSetupUserCanCreatePostWithEmptyContent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Morden_Blog" />
       <extension name="coverage">
         <pattern>
@@ -144,7 +141,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="africa.semicolon.services" />
       <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.PostServiceImplTest" />
-      <option name="METHOD_NAME" value="testThatAfterSetupUserCanCreateAPost" />
+      <option name="METHOD_NAME" value="testThatAfterSetupUserCanCreatePostWithEmptyContent" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -197,11 +194,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PostServiceImplTest.testThatAfterSetupUserCanCreatePostWithEmptyContent" />
         <item itemvalue="JUnit.PostServiceImplTest.testThatAfterSetupUserCanDeleteACreatedPost" />
         <item itemvalue="JUnit.PostServiceImplTest.testThatAfterSetupUserCanEditACreatedPost" />
         <item itemvalue="JUnit.PostServiceImplTest" />
         <item itemvalue="JUnit.PostServiceImplTest.testThatAfterSetupUserCanCreatAPost" />
-        <item itemvalue="JUnit.PostServiceImplTest.testThatAfterSetupUserCanCreateAPost" />
       </list>
     </recent_temporary>
   </component>
@@ -219,7 +216,7 @@
       <workItem from="1711795418917" duration="7902000" />
       <workItem from="1711841654557" duration="13000" />
       <workItem from="1711841710663" duration="2045000" />
-      <workItem from="1711844079589" duration="5480000" />
+      <workItem from="1711844079589" duration="12831000" />
     </task>
     <task id="LOCAL-00001" summary="STILL PUSHING">
       <option name="closed" value="true" />
@@ -317,7 +314,31 @@
       <option name="project" value="LOCAL" />
       <updated>1711873663606</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="UserTestDone(9am pushing)">
+      <option name="closed" value="true" />
+      <created>1711958802836</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1711958802836</updated>
+    </task>
+    <task id="LOCAL-00014" summary="UserTestDone(9am pushing)">
+      <option name="closed" value="true" />
+      <created>1711958986157</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1711958986157</updated>
+    </task>
+    <task id="LOCAL-00015" summary="UserTestDone(9am pushing)">
+      <option name="closed" value="true" />
+      <created>1711959006180</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1711959006180</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -326,6 +347,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="STILL PUSHING" />
     <MESSAGE value="UserTestDone(I they code for church)" />
-    <option name="LAST_COMMIT_MESSAGE" value="UserTestDone(I they code for church)" />
+    <MESSAGE value="UserTestDone(9am pushing)" />
+    <option name="LAST_COMMIT_MESSAGE" value="UserTestDone(9am pushing)" />
   </component>
 </project>

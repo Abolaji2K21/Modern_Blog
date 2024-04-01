@@ -55,6 +55,21 @@ class PostServiceImplTest {
     }
 
     @Test
+    void testThatAfterSetupUserCanCreatePostWithEmptyContent() {
+        assertTrue(userRepository.existsByUsername("penisup"));
+
+        CreatePostRequest createPostRequest = new CreatePostRequest();
+        createPostRequest.setUsername("penisup");
+        createPostRequest.setTitle("Empty Content Post");
+        createPostRequest.setContent("");
+        CreatePostResponse createPostResponse = postService.createPostWith(createPostRequest);
+        assertEquals("", createPostResponse.getContent());
+
+        User user = userRepository.findByUsername("penisup");
+        assertThat(user.getPosts().size(), is(1));
+    }
+
+    @Test
     void testThatAfterSetupUserCanCreatAPost() {
         assertTrue(userRepository.existsByUsername("penisup"));
 
@@ -134,19 +149,22 @@ class PostServiceImplTest {
         createPostRequest.setTitle("On a Monday Morning 4am PenIsStillUp");
         createPostRequest.setContent("You Dont Want To Even Know");
         CreatePostResponse createPostResponse = postService.createPostWith(createPostRequest);
-        User user = userRepository.findByUsername("penisup");
-        assertEquals(1, user.getPosts().size());
-        assertThat(user.getPosts().size(), is(1));
+//        assertEquals(1, user.getPosts().size());
+        assertThat(userRepository.findByUsername("penisup").getPosts().size(), is(1));
 
         DeletePostRequest deletePostRequest = new DeletePostRequest();
         deletePostRequest.setUsername("penisup");
         deletePostRequest.setPostId(createPostResponse.getPostId());
         postService.deletePostWith(deletePostRequest);
         assertFalse(postRepository.existsById(createPostResponse.getPostId()));
-        System.out.println("User's list of posts before deletion: " + user.getPosts());
+//        System.out.println("User's list of posts before deletion: " + user.getPosts());
+//        User user =userRepository.findByUsername("penisup");
+        assertThat(userRepository.findByUsername("penisup").getPosts().size(), is(0));
+    }
 
-        assertThat(user.getPosts().size(), is(0));
 
+    @Test
+    void testThatAfterSetupUserCanGetHisCreatedPost() {
 
     }
 

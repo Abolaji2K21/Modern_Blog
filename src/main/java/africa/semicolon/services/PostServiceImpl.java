@@ -50,8 +50,8 @@ public class PostServiceImpl implements PostService {
         newPost.setDateTimeCreated(LocalDateTime.now());
         newPost.setUserId(foundUser.getId());
 
-        postRepository.save(newPost);
-        foundUser.getPosts().add(newPost);
+        Post mypost = postRepository.save(newPost);
+        foundUser.getPosts().add(mypost);
         userRepository.save(foundUser);
 
 
@@ -141,9 +141,9 @@ public class PostServiceImpl implements PostService {
         if (!post.getUserId().equals(user.getId())) {
             throw new BigBlogException("You are not authorized to delete this post");
         }
-        postRepository.delete(post);
         user.getPosts().remove(post);
         userRepository.save(user);
+        postRepository.delete(post);
         return new DeletePostResponse();
     }
 
