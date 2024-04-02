@@ -52,6 +52,7 @@
             <artifactId>de.flapdoodle.embed.mongo.spring30x</artifactId>
             <version>4.6.2</version>
             <optional>true</optional>
+            <scope>test</scope>
         </dependency>
 
 
