@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="1990bf40-2be8-488c-a8ec-b4a71196d267" name="Changes" comment="UserTestDone(SomeBody Is After My Life)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/requests/CreateCommentRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/requests/CreateCommentRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/repositories/CommentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/repositories/CommentRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/requests/EditCommentRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/requests/EditCommentRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/EditCommentResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/EditCommentResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/CommentService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/CommentServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/africa/semicolon/services/CommentServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/africa/semicolon/services/CommentServiceImplTest.java" afterDir="false" />
     </list>
@@ -43,8 +46,10 @@
   "keyToString": {
     "HTTP Request.generated-requests | #3.executor": "Run",
     "HTTP Request.generated-requests | #4.executor": "Run",
+    "JUnit.CommentServiceImplTest.testThatAUserCanOnlyCommentOnACreatedPost.executor": "Run",
     "JUnit.CommentServiceImplTest.testThatMoreThanOneUserCanCommentOnACreatedPost.executor": "Run",
     "JUnit.CommentServiceImplTest.testThatUserCanCommentOnACreatedPost.executor": "Run",
+    "JUnit.CommentServiceImplTest.testThatYouCanEditACreatedComment.executor": "Run",
     "JUnit.PostServiceImplTest.executor": "Run",
     "JUnit.PostServiceImplTest.testThatAfterSetupAnotherUserCantEditAnotherUserCreatedPost.executor": "Run",
     "JUnit.PostServiceImplTest.testThatAfterSetupUserCanCreatAPost.executor": "Run",
@@ -105,7 +110,23 @@
       <recent name="africa.semicolon.data.repositories" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CommentServiceImplTest.testThatMoreThanOneUserCanCommentOnACreatedPost">
+  <component name="RunManager" selected="JUnit.CommentServiceImplTest.testThatYouCanEditACreatedComment">
+    <configuration name="CommentServiceImplTest.testThatAUserCanOnlyCommentOnACreatedPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Morden_Blog" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="africa.semicolon.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="africa.semicolon.services" />
+      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.CommentServiceImplTest" />
+      <option name="METHOD_NAME" value="testThatAUserCanOnlyCommentOnACreatedPost" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CommentServiceImplTest.testThatMoreThanOneUserCanCommentOnACreatedPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Morden_Blog" />
       <extension name="coverage">
@@ -138,6 +159,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CommentServiceImplTest.testThatYouCanEditACreatedComment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Morden_Blog" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="africa.semicolon.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="africa.semicolon.services" />
+      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.CommentServiceImplTest" />
+      <option name="METHOD_NAME" value="testThatYouCanEditACreatedComment" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PostServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Morden_Blog" />
       <extension name="coverage">
@@ -153,45 +190,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PostServiceImplTest.testThatAfterSetupAnotherUserCantEditAnotherUserCreatedPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Morden_Blog" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="africa.semicolon.services.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="africa.semicolon.services" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.PostServiceImplTest" />
-      <option name="METHOD_NAME" value="testThatAfterSetupAnotherUserCantEditAnotherUserCreatedPost" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PostServiceImplTest.testThatAfterSetupUserCantEditANonCreatedPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Morden_Blog" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="africa.semicolon.services.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="africa.semicolon.services" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.PostServiceImplTest" />
-      <option name="METHOD_NAME" value="testThatAfterSetupUserCantEditANonCreatedPost" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CommentServiceImplTest.testThatYouCanEditACreatedComment" />
+        <item itemvalue="JUnit.CommentServiceImplTest.testThatAUserCanOnlyCommentOnACreatedPost" />
         <item itemvalue="JUnit.CommentServiceImplTest.testThatMoreThanOneUserCanCommentOnACreatedPost" />
         <item itemvalue="JUnit.CommentServiceImplTest.testThatUserCanCommentOnACreatedPost" />
         <item itemvalue="JUnit.PostServiceImplTest" />
-        <item itemvalue="JUnit.PostServiceImplTest.testThatAfterSetupUserCantEditANonCreatedPost" />
-        <item itemvalue="JUnit.PostServiceImplTest.testThatAfterSetupAnotherUserCantEditAnotherUserCreatedPost" />
       </list>
     </recent_temporary>
   </component>
@@ -210,7 +215,7 @@
       <workItem from="1711841654557" duration="13000" />
       <workItem from="1711841710663" duration="2045000" />
       <workItem from="1711844079589" duration="20419000" />
-      <workItem from="1712038796482" duration="4074000" />
+      <workItem from="1712038796482" duration="9382000" />
     </task>
     <task id="LOCAL-00001" summary="STILL PUSHING">
       <option name="closed" value="true" />
@@ -372,7 +377,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712038317719</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="UserTestDone(SomeBody Is After My Life)">
+      <option name="closed" value="true" />
+      <created>1712043122226</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1712043122226</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

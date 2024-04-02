@@ -1,14 +1,14 @@
 package africa.semicolon.services;
 
+import africa.semicolon.BlogException.BigBlogException;
+import africa.semicolon.BlogException.PostNotFoundException;
 import africa.semicolon.data.repositories.CommentRepository;
 import africa.semicolon.data.repositories.PostRepository;
 import africa.semicolon.data.repositories.UserRepository;
-import africa.semicolon.dtos.requests.CreateCommentRequest;
-import africa.semicolon.dtos.requests.CreatePostRequest;
-import africa.semicolon.dtos.requests.LoginUserRequest;
-import africa.semicolon.dtos.requests.RegisterUserRequest;
+import africa.semicolon.dtos.requests.*;
 import africa.semicolon.dtos.responds.CreateCommentResponse;
 import africa.semicolon.dtos.responds.CreatePostResponse;
+import africa.semicolon.dtos.responds.EditCommentResponse;
 import africa.semicolon.dtos.responds.LoginUserResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -124,6 +124,43 @@ class CommentServiceImplTest {
     }
 
     @Test
-    void testThat
+    void testThatAUserCanOnlyCommentOnACreatedPost(){
+        CreatePostRequest createPostRequest = new CreatePostRequest();
+        createPostRequest.setUsername("penisup");
+        createPostRequest.setTitle("On a Monday Morning 4am PenIsStillUp");
+        createPostRequest.setContent("You Dont Want To Even Know");
+        CreatePostResponse createPostResponse = postService.createPostWith(createPostRequest);
 
+        CreateCommentRequest createCommentRequest = new CreateCommentRequest();
+        createCommentRequest.setUsername("penisup");
+        createCommentRequest.setPostId("You Dont Say");
+        createCommentRequest.setContent("This comment should fail.");
+//        CreateCommentResponse createCommentResponse = commentService.createCommentWith(createCommentRequest);
+
+        assertThrows(BigBlogException.class, () -> commentService.createCommentWith(createCommentRequest));
+
+    }
+
+//    @Test
+//    void testThatYouCanEditACreatedComment(){
+//        CreatePostRequest createPostRequest = new CreatePostRequest();
+//        createPostRequest.setUsername("penisup");
+//        createPostRequest.setTitle("On a Monday Morning 4am PenIsStillUp");
+//        createPostRequest.setContent("You Dont Want To Even Know");
+//        CreatePostResponse createPostResponse = postService.createPostWith(createPostRequest);
+//
+//        CreateCommentRequest createCommentRequest = new CreateCommentRequest();
+//        createCommentRequest.setUsername("penisup");
+//        createCommentRequest.setPostId(createPostResponse.getPostId());
+//        createCommentRequest.setContent("Oga Oga Oga.");
+//        CreateCommentResponse createCommentResponse = commentService.createCommentWith(createCommentRequest);
+//
+//        EditCommentRequest editCommentRequest = new EditCommentRequest();
+//        editCommentRequest.setCommentId(createPostResponse.getPostId());
+//        editCommentRequest.setContent("You must not and should not");
+//        EditCommentResponse editCommentResponse = commentService.editCommentWith(createCommentRequest);
+//        assertEquals("This is the edited comment", editCommentResponse.getContent());
+//
+//
+//    }
 }

@@ -70,18 +70,29 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public EditCommentResponse editCommentWith(EditCommentRequest editCommentRequest) {
-        User user =findUserBy(editCommentRequest.getContent());
-        Comment comment = commentRepository.findById(editCommentRequest.getCommentId())
-                .orElseThrow(() -> new BigBlogException("Comment not found"));
-        if (!user.getId().equals(comment.getUserId())) {
-            throw new UserNotFoundException("Comment does not belong to user");
+    public EditCommentResponse editCommentWith(CreateCommentRequest createCommentRequest) {
+
+        Post post = postRepository.findById(createCommentRequest.getPostId())
+                .orElseThrow(() -> new PostNotFoundException("Post not found"));
+
+
+        Comment comment = commentRepository.findByPostAndUserId(post, createCommentRequest.getUsername())
+                .orElseThrow(() -> new BigBlogException("Comment not found for postId: "));
+
+
+        if (!createCommentRequest.getUsername().equals(comment.getUserId())) {
+            throw new UserNotFoundException("User does not have permission to edit this comment");
         }
-        comment.setComment(editCommentRequest.getContent());
+
+        comment.setComment(createCommentRequest.getContent());
+
         commentRepository.save(comment);
 
         EditCommentResponse response = new EditCommentResponse();
-        BeanUtils.copyProperties(comment, response);
+        response.setPostId(post.getId());
+        response.setContent(comment.getComment());
+        response.setUsername(comment.getUserId());
+
         return response;
     }
 
