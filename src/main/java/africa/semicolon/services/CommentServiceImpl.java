@@ -52,13 +52,20 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public CreateCommentResponse createCommentWith(CreateCommentRequest createCommentRequest) {
         User user = findUserBy(createCommentRequest.getUsername());
+
+        Post post = postRepository.findById(createCommentRequest.getPostId())
+                .orElseThrow(() -> new PostNotFoundException("Post not found"));
+
         Comment newComment = new Comment();
-        BeanUtils.copyProperties(createCommentRequest,newComment);
         newComment.setUserId(user.getId());
+        newComment.setPost(post);
+        newComment.setComment(createCommentRequest.getContent());
         commentRepository.save(newComment);
 
         CreateCommentResponse response = new CreateCommentResponse();
-        BeanUtils.copyProperties(newComment,response);
+        response.setPostId(post.getId());
+        response.setContent(newComment.getComment());
+        response.setUsername(user.getUsername());
         return response;
     }
 
