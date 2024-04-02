@@ -117,25 +117,31 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public EditPostResponse editPostWith(EditPostRequest editPostRequest) {
+    public EditPostResponse edit(EditPostRequest editPostRequest) {
         User user = findUserBy(editPostRequest.getUsername());
-        Post post = postRepository.findById(editPostRequest.getPostId()).orElseThrow(() -> new PostNotFoundException("post not found"));
+        Post post = postRepository.findById(editPostRequest.getPostId())
+                .orElseThrow(() -> new PostNotFoundException("Post not found"));
+
         if (!user.getId().equals(post.getUserId())) {
             throw new UserNotFoundException("Post does not belong to user");
         }
+
         post.setTitle(StringUtils.isEmpty(editPostRequest.getTitle()) ? post.getTitle() : editPostRequest.getTitle());
         post.setContent(StringUtils.isEmpty(editPostRequest.getContent()) ? post.getContent() : editPostRequest.getContent());
         post.setDateTimeUpdated(LocalDateTime.now());
         postRepository.save(post);
+
         EditPostResponse response = new EditPostResponse();
         BeanUtils.copyProperties(post, response);
         response.setPostId(post.getId());
         response.setDateCreated(post.getDateTimeCreated().toString());
+
         return response;
     }
 
+
     @Override
-    public DeletePostResponse deletePostWith(DeletePostRequest deletePostRequest) {
+    public DeletePostResponse delete(DeletePostRequest deletePostRequest) {
         User user = findUserBy(deletePostRequest.getUsername());
         Post post = postRepository.findById(deletePostRequest.getPostId()).orElseThrow(() -> new PostNotFoundException("post not found"));
         if (!post.getUserId().equals(user.getId())) {

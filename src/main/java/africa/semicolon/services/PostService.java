@@ -15,9 +15,9 @@ import java.util.List;
 public interface PostService {
     CreatePostResponse createPostWith(CreatePostRequest createPostRequest);
 
-    EditPostResponse editPostWith(EditPostRequest editPostRequest);
+    EditPostResponse edit(EditPostRequest editPostRequest);
 
-    DeletePostResponse deletePostWith(DeletePostRequest deletePostRequest);
+    DeletePostResponse delete(DeletePostRequest deletePostRequest);
 
     User findUserBy(String username);
 

@@ -131,7 +131,7 @@ class PostServiceImplTest {
         editPostRequest.setPostId(createPostResponse.getPostId());
         editPostRequest.setTitle("Edited Title");
         editPostRequest.setContent("Edited Content");
-        postService.editPostWith(editPostRequest);
+        postService.edit(editPostRequest);
 
         User foundUser = userRepository.findByUsername("penisup");
         Post updatedPost = foundUser.getPosts().getFirst();
@@ -158,7 +158,7 @@ class PostServiceImplTest {
         editPostRequest.setContent("Edited Content");
 
         try{
-            postService.editPostWith(editPostRequest);
+            postService.edit(editPostRequest);
         } catch (BigBlogException message){
             assertEquals("post not found", message.getMessage());
 
@@ -200,7 +200,7 @@ class PostServiceImplTest {
         editPostRequest.setContent("Edited Content");
 
         try{
-            postService.editPostWith(editPostRequest);
+            postService.edit(editPostRequest);
         } catch (BigBlogException message){
             assertEquals("Post does not belong to user", message.getMessage());
 
@@ -227,7 +227,7 @@ class PostServiceImplTest {
         DeletePostRequest deletePostRequest = new DeletePostRequest();
         deletePostRequest.setUsername("penisup");
         deletePostRequest.setPostId(createPostResponse.getPostId());
-        postService.deletePostWith(deletePostRequest);
+        postService.delete(deletePostRequest);
         assertFalse(postRepository.existsById(createPostResponse.getPostId()));
 //        System.out.println("User's list of posts before deletion: " + user.getPosts());
 //        User user =userRepository.findByUsername("penisup");
@@ -263,7 +263,7 @@ class PostServiceImplTest {
         deletePostRequest.setUsername("penisdown");
         deletePostRequest.setPostId(createPostResponse.getPostId());
             try{
-                postService.deletePostWith(deletePostRequest);
+                postService.delete(deletePostRequest);
             } catch (BigBlogException message){
                 assertEquals("You are not authorized to delete this post", message.getMessage());
 
@@ -287,7 +287,7 @@ class PostServiceImplTest {
         deletePostRequest.setUsername("penisdown");
         deletePostRequest.setPostId(createPostResponse.getPostId());
         try{
-            postService.deletePostWith(deletePostRequest);
+            postService.delete(deletePostRequest);
         } catch (BigBlogException message){
             assertEquals("User with username penisdown not found", message.getMessage());
 
