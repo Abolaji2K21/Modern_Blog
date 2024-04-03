@@ -29,12 +29,12 @@ public class Mapper {
         return registerUserResponse;
     }
 
-    public static EditPostResponse mapEditPostResponse(Post post) {
-        EditPostResponse response = new EditPostResponse();
-        BeanUtils.copyProperties(post, response);
-        response.setPostId(post.getId());
-        response.setDateCreated(post.getDateTimeCreated().toString());
-        return response;
-    }
+//    public static EditPostResponse mapEditPostResponse(Post post) {
+//        EditPostResponse response = new EditPostResponse();
+//        BeanUtils.copyProperties(post, response);
+//        response.setPostId(post.getId());
+//        response.setDateCreated(post.getDateTimeCreated().toString());
+//        return response;
+//    }
 
 }

@@ -160,7 +160,7 @@ class PostServiceImplTest {
         try{
             postService.edit(editPostRequest);
         } catch (BigBlogException message){
-            assertEquals("post not found", message.getMessage());
+            assertEquals("Post not found", message.getMessage());
 
         }
         assertThat(userRepository.findByUsername("penisup").getPosts().size(), is(1));

@@ -16,7 +16,6 @@ import africa.semicolon.dtos.responds.CreatePostResponse;
 import africa.semicolon.dtos.responds.DeletePostResponse;
 import africa.semicolon.dtos.responds.EditPostResponse;
 import africa.semicolon.dtos.responds.ActivitiesResponse;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -86,6 +85,7 @@ public class PostServiceImpl implements PostService {
 
     }
 
+
     @Override
     public List<ActivitiesResponse> getAllPosts() {
         // stream api
@@ -126,8 +126,17 @@ public class PostServiceImpl implements PostService {
             throw new UserNotFoundException("Post does not belong to user");
         }
 
-        post.setTitle(StringUtils.isEmpty(editPostRequest.getTitle()) ? post.getTitle() : editPostRequest.getTitle());
-        post.setContent(StringUtils.isEmpty(editPostRequest.getContent()) ? post.getContent() : editPostRequest.getContent());
+        String newTitle = editPostRequest.getTitle();
+        String newContent = editPostRequest.getContent();
+
+        if (newTitle != null && !newTitle.isEmpty()) {
+            post.setTitle(newTitle);
+        }
+
+        if (newContent != null && !newContent.isEmpty()) {
+            post.setContent(newContent);
+        }
+
         post.setDateTimeUpdated(LocalDateTime.now());
         postRepository.save(post);
 
@@ -138,6 +147,7 @@ public class PostServiceImpl implements PostService {
 
         return response;
     }
+
 
 
     @Override

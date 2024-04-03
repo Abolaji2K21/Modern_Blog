@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
     public LoginUserResponse login(LoginUserRequest loginUserRequest) {
         String username = loginUserRequest.getUsername().toLowerCase();
         String password = loginUserRequest.getPassword();
-        User user = userRepository.findByUsername(username);
+        User user = findUserBy(username);
         if (user == null) {
             throw new UserNotFoundException("User with username " + username + " not found");
         }
@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public LogoutUserResponse logout(LogoutUserRequest logoutUserRequest) {
         String username = logoutUserRequest.getUsername().toLowerCase();
-        User user = userRepository.findByUsername(username);
+        User user = findUserBy(username);
         if (user == null) {
             throw new UserNotFoundException("User with username " + username + " not found");
         } else {
