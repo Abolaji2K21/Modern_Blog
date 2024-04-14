@@ -3,11 +3,11 @@ package africa.semicolon.dtos.responds;
 import lombok.Data;
 
 @Data
-public class RegisterUserResponse {
+public class UpdateUserResponse {
+    private String firstname;
+    private String lastname;
     private String userId;
     private String username;
-    private String dateRegistered;
+    private String dateUpdated;
     private boolean loggedIn;
-
-
 }

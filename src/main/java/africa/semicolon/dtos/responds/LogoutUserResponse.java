@@ -8,5 +8,7 @@ import lombok.Data;
 public class LogoutUserResponse {
     private String userId;
     private String username;
+    private boolean loggedIn;
+
 
 }

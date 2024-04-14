@@ -5,8 +5,8 @@ import africa.semicolon.BlogException.BigBlogException;
 import africa.semicolon.dtos.requests.LoginUserRequest;
 import africa.semicolon.dtos.requests.LogoutUserRequest;
 import africa.semicolon.dtos.requests.RegisterUserRequest;
-import africa.semicolon.dtos.responds.ApiResponse;
-import africa.semicolon.dtos.responds.RegisterUserResponse;
+import africa.semicolon.dtos.requests.UpdateUserRequest;
+import africa.semicolon.dtos.responds.*;
 import africa.semicolon.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,20 +22,19 @@ public class UserController {
     private UserService userService;
 
 
-    @PostMapping("/signUp")
+    @PostMapping("/sign_up")
     public ResponseEntity<?> registerUser(@RequestBody RegisterUserRequest registerUserRequest) {
         try{
-            var result = userService.register(registerUserRequest);
+            RegisterUserResponse result = userService.register(registerUserRequest);
             return new ResponseEntity<>(new ApiResponse(true,result),CREATED);
         } catch (BigBlogException message){
             return new ResponseEntity<>(new ApiResponse(false, message.getMessage()),BAD_REQUEST);
         }
     }
-
     @PatchMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginUserRequest loginUserRequest) {
         try {
-            var result = userService.login(loginUserRequest);
+            LoginUserResponse result = userService.login(loginUserRequest);
             return new ResponseEntity<>(new ApiResponse(true, result), CREATED);
         }
         catch (BigBlogException message) {
@@ -46,7 +45,7 @@ public class UserController {
     @PatchMapping("/logout")
     public ResponseEntity<?> logout(@RequestBody LogoutUserRequest logoutUserRequest) {
         try {
-            var result = userService.logout(logoutUserRequest);
+            LogoutUserResponse result = userService.logout(logoutUserRequest);
             return new ResponseEntity<>(new ApiResponse(true, result), CREATED);
         }
         catch (BigBlogException message) {
@@ -54,6 +53,17 @@ public class UserController {
         }
     }
 
+    @PatchMapping("/update")
+    public ResponseEntity<?> updateUserProfile(@RequestBody UpdateUserRequest request) {
+
+        try{
+            UpdateUserResponse result = userService.updateUserProfile(request);
+            return new ResponseEntity<>(new ApiResponse(true,result), CREATED);
+        }
+        catch (BigBlogException message){
+            return new ResponseEntity<>(new ApiResponse(false, message.getMessage()), BAD_REQUEST);
+        }
+    }
 
 
 }
