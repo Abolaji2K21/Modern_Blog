@@ -2,6 +2,7 @@ package africa.semicolon.services;
 
 import africa.semicolon.BlogException.BigBlogException;
 import africa.semicolon.BlogException.PostNotFoundException;
+import africa.semicolon.data.model.Comment;
 import africa.semicolon.data.repositories.CommentRepository;
 import africa.semicolon.data.repositories.PostRepository;
 import africa.semicolon.data.repositories.UserRepository;
@@ -12,6 +13,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -163,6 +166,148 @@ class CommentServiceImplTest {
         EditCommentResponse editCommentResponse = commentService.editCommentWith(editCommentRequest);
 
         assertEquals("You must not and should not", editCommentResponse.getComment());
+    }
+    @Test
+    void testThatUserCanDeleteTheirComment() {
+        CreatePostRequest createPostRequest = new CreatePostRequest();
+        createPostRequest.setUserId(userResponse.getUserId());
+        createPostRequest.setTitle("On a Monday Morning 4am PenIsStillUp");
+        createPostRequest.setContent("You Dont Want To Even Know");
+        CreatePostResponse createPostResponse = postService.createPostWith(createPostRequest);
+
+        CreateCommentRequest createCommentRequest = new CreateCommentRequest();
+        createCommentRequest.setUserId(userResponse.getUserId());
+        createCommentRequest.setPostId(createPostResponse.getPostId());
+        createCommentRequest.setComment("This is a comment to be deleted.");
+        CreateCommentResponse createCommentResponse = commentService.createCommentWith(createCommentRequest);
+
+        DeleteCommentRequest deleteCommentRequest = new DeleteCommentRequest();
+        deleteCommentRequest.setCommentId(createCommentResponse.getCommentId());
+        deleteCommentRequest.setUserId(userResponse.getUserId());
+        commentService.deleteCommentWith(deleteCommentRequest);
+
+        assertFalse(commentRepository.existsById(createCommentResponse.getCommentId()));
+    }
+
+    @Test
+    void testThatYouCannotEditNonExistentComment() {
+        EditCommentRequest editCommentRequest = new EditCommentRequest();
+        editCommentRequest.setCommentId("nonExistentCommentId");
+        editCommentRequest.setPostId("nonExistentPostId");
+        editCommentRequest.setUserId("nonExistentUserId");
+        editCommentRequest.setComment("This comment should not exist.");
+
+        assertThrows(BigBlogException.class, () -> commentService.editCommentWith(editCommentRequest));
+    }
+
+    @Test
+    void testThatUserCannotEditCommentCreatedByAnotherUser() {
+        RegisterUserRequest registerRequest = new RegisterUserRequest();
+        registerRequest.setFirstname("Another");
+        registerRequest.setLastname("User");
+        registerRequest.setUsername("AnotherUser");
+        registerRequest.setPassword("AnotherPassword");
+        RegisterUserResponse anotherUserResponse = userService.register(registerRequest);
+
+        CreatePostRequest createPostRequest = new CreatePostRequest();
+        createPostRequest.setUserId(userResponse.getUserId());
+        createPostRequest.setTitle("On a Monday Morning 4am PenIsStillUp");
+        createPostRequest.setContent("You Dont Want To Even Know");
+        CreatePostResponse createPostResponse = postService.createPostWith(createPostRequest);
+
+        CreateCommentRequest createCommentRequest = new CreateCommentRequest();
+        createCommentRequest.setUserId(userResponse.getUserId());
+        createCommentRequest.setPostId(createPostResponse.getPostId());
+        createCommentRequest.setComment("This comment should not be edited by AnotherUser.");
+        CreateCommentResponse createCommentResponse = commentService.createCommentWith(createCommentRequest);
+
+        EditCommentRequest editCommentRequest = new EditCommentRequest();
+        editCommentRequest.setCommentId(createCommentResponse.getCommentId());
+        editCommentRequest.setPostId(createPostResponse.getPostId());
+        editCommentRequest.setUserId(anotherUserResponse.getUserId());
+        editCommentRequest.setComment("This comment should not be edited by AnotherUser.");
+
+        assertThrows(BigBlogException.class, () -> commentService.editCommentWith(editCommentRequest));
+    }
+
+    @Test
+    void testThatYouCannotDeleteNonExistentComment() {
+        DeleteCommentRequest deleteCommentRequest = new DeleteCommentRequest();
+        deleteCommentRequest.setCommentId("nonExistentCommentId");
+        deleteCommentRequest.setUserId("nonExistentUserId");
+
+        assertThrows(BigBlogException.class, () -> commentService.deleteCommentWith(deleteCommentRequest));
+    }
+
+    @Test
+    void testThatUserCannotDeleteCommentCreatedByAnotherUser() {
+        RegisterUserRequest registerRequest = new RegisterUserRequest();
+        registerRequest.setFirstname("Another");
+        registerRequest.setLastname("User");
+        registerRequest.setUsername("AnotherUser");
+        registerRequest.setPassword("AnotherPassword");
+        RegisterUserResponse anotherUserResponse = userService.register(registerRequest);
+
+        CreatePostRequest createPostRequest = new CreatePostRequest();
+        createPostRequest.setUserId(userResponse.getUserId());
+        createPostRequest.setTitle("On a Monday Morning 4am PenIsStillUp");
+        createPostRequest.setContent("You Dont Want To Even Know");
+        CreatePostResponse createPostResponse = postService.createPostWith(createPostRequest);
+
+        CreateCommentRequest createCommentRequest = new CreateCommentRequest();
+        createCommentRequest.setUserId(userResponse.getUserId());
+        createCommentRequest.setPostId(createPostResponse.getPostId());
+        createCommentRequest.setComment("This comment should not be deleted by AnotherUser.");
+        CreateCommentResponse createCommentResponse = commentService.createCommentWith(createCommentRequest);
+
+        DeleteCommentRequest deleteCommentRequest = new DeleteCommentRequest();
+        deleteCommentRequest.setCommentId(createCommentResponse.getCommentId());
+        deleteCommentRequest.setUserId(anotherUserResponse.getUserId());
+
+        assertThrows(BigBlogException.class, () -> commentService.deleteCommentWith(deleteCommentRequest));
+    }
+
+    @Test
+    void testThatYouCanGetAllCommentsForAPost() {
+        CreatePostRequest createPostRequest = new CreatePostRequest();
+        createPostRequest.setUserId(userResponse.getUserId());
+        createPostRequest.setTitle("On a Monday Morning 4am PenIsStillUp");
+        createPostRequest.setContent("You Dont Want To Even Know");
+        CreatePostResponse createPostResponse = postService.createPostWith(createPostRequest);
+
+        CreateCommentRequest createCommentRequestOne = new CreateCommentRequest();
+        createCommentRequestOne.setUserId(userResponse.getUserId());
+        createCommentRequestOne.setPostId(createPostResponse.getPostId());
+        createCommentRequestOne.setComment("This is the first comment.");
+        CreateCommentResponse createCommentResponseOne = commentService.createCommentWith(createCommentRequestOne);
+
+        CreateCommentRequest createCommentRequestTwo = new CreateCommentRequest();
+        createCommentRequestTwo.setUserId(userResponse.getUserId());
+        createCommentRequestTwo.setPostId(createPostResponse.getPostId());
+        createCommentRequestTwo.setComment("This is the second comment.");
+        CreateCommentResponse createCommentResponseTwo = commentService.createCommentWith(createCommentRequestTwo);
+
+        List<Comment> comments = commentService.getCommentsByUser(createPostResponse.getPostId(),userResponse.getUserId());
+        assertEquals(2, comments.size());
+
+        boolean commentOneFound = false;
+        boolean commentTwoFound = false;
+        for (Comment comment : comments) {
+            if (comment.getComment().equals(createCommentResponseOne.getComment())) {
+                commentOneFound = true;
+            }
+            if (comment.getComment().equals(createCommentResponseTwo.getComment())) {
+                commentTwoFound = true;
+            }
+        }
+
+        assertTrue(commentOneFound);
+        assertTrue(commentTwoFound);
+    }
+
+    @Test
+    void testThatYouCannotGetCommentsForNonExistentPost() {
+        assertThrows(PostNotFoundException.class, () -> commentService.getCommentBy("nonExistentPostId"));
     }
 
 

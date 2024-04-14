@@ -6,10 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1990bf40-2be8-488c-a8ec-b4a71196d267" name="Changes" comment="UserTestDone(SomeBody Is After My Life)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/model/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/model/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/CreateCommentResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/CreateCommentResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/CommentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/CommentServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/africa/semicolon/services/CommentServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/africa/semicolon/services/CommentServiceImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -109,7 +105,22 @@
       <recent name="africa.semicolon.data.repositories" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CommentServiceImplTest.testThatYouCanEditACreatedComment">
+  <component name="RunManager" selected="JUnit.CommentServiceImplTest.testThatYouCanGetAllCommentsForAPost">
+    <configuration name="CommentServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Modern_Notes_Management" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="africa.semicolon.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="africa.semicolon.services" />
+      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.CommentServiceImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CommentServiceImplTest.testThatAUserCanOnlyCommentOnACreatedPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Modern_Notes_Management" />
       <extension name="coverage">
@@ -142,22 +153,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CommentServiceImplTest.testThatUserCanCommentOnACreatedPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Modern_Notes_Management" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="africa.semicolon.services.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="africa.semicolon.services" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.CommentServiceImplTest" />
-      <option name="METHOD_NAME" value="testThatUserCanCommentOnACreatedPost" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="CommentServiceImplTest.testThatYouCanEditACreatedComment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Modern_Notes_Management" />
       <extension name="coverage">
@@ -174,7 +169,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CommentServiceImplTest.testThatYouCanGetAllCommentsForAPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Modern_Notes_Management" />
       <extension name="coverage">
         <pattern>
@@ -183,19 +178,20 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="africa.semicolon.services" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.UserServiceImplTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.CommentServiceImplTest" />
+      <option name="METHOD_NAME" value="testThatYouCanGetAllCommentsForAPost" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CommentServiceImplTest.testThatYouCanGetAllCommentsForAPost" />
+        <item itemvalue="JUnit.CommentServiceImplTest" />
         <item itemvalue="JUnit.CommentServiceImplTest.testThatYouCanEditACreatedComment" />
         <item itemvalue="JUnit.CommentServiceImplTest.testThatAUserCanOnlyCommentOnACreatedPost" />
         <item itemvalue="JUnit.CommentServiceImplTest.testThatMoreThanOneUserCanCommentOnACreatedPost" />
-        <item itemvalue="JUnit.CommentServiceImplTest.testThatUserCanCommentOnACreatedPost" />
-        <item itemvalue="JUnit.UserServiceImplTest" />
       </list>
     </recent_temporary>
   </component>
