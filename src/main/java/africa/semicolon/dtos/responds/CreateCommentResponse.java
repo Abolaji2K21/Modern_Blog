@@ -7,5 +7,7 @@ public class CreateCommentResponse {
     private String postId;
     private String comment;
     private String userId;
+    private String commentId;
+
 }
 

@@ -51,7 +51,7 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public CreateCommentResponse createCommentWith(CreateCommentRequest createCommentRequest) {
-        findUserBy(createCommentRequest.getUserId());
+        findUserByUserId(createCommentRequest.getUserId());
 
         postRepository.findByPostId(createCommentRequest.getPostId())
                 .orElseThrow(() -> new PostNotFoundException("Post not found"));
@@ -66,30 +66,29 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public EditCommentResponse editCommentWith(CreateCommentRequest createCommentRequest) {
-
-        Post post = postRepository.findById(createCommentRequest.getPostId())
+    public EditCommentResponse editCommentWith(EditCommentRequest editCommentRequest) {
+        Post post = postRepository.findById(editCommentRequest.getPostId())
                 .orElseThrow(() -> new PostNotFoundException("Post not found"));
 
-
-        Comment comment = commentRepository.findByPostIdAndUserId(createCommentRequest.getPostId(), createCommentRequest.getUserId())
+       Comment comment = commentRepository.findByPostIdAndUserId(editCommentRequest.getPostId(), editCommentRequest.getUserId())
                 .orElseThrow(() -> new BigBlogException("Comment not found for postId: "));
 
+        commentRepository.delete(comment);
 
-        if (!createCommentRequest.getUserId().equals(comment.getUserId())) {
-            throw new UserNotFoundException("User does not have permission to edit this comment");
-        }
+        Comment newComment = new Comment();
+        BeanUtils.copyProperties(editCommentRequest, newComment);
+        newComment.setDateTimeCreated(LocalDateTime.now());
+        commentRepository.save(newComment);
 
-        comment.setComment(createCommentRequest.getComment());
-        commentRepository.save(comment);
         EditCommentResponse response = new EditCommentResponse();
-        BeanUtils.copyProperties(comment, response);
+        BeanUtils.copyProperties(newComment, response);
         return response;
     }
 
+
     @Override
     public DeleteCommentResponse deleteCommentWith(DeleteCommentRequest deleteCommentRequest) {
-        User user = findUserBy(deleteCommentRequest.getUserId());
+        User user = findUserByUserId(deleteCommentRequest.getUserId());
         Comment comment = commentRepository.findById(deleteCommentRequest.getCommentId())
                 .orElseThrow(() -> new BigBlogException("Comment not found"));
 
@@ -112,4 +111,14 @@ public class CommentServiceImpl implements CommentService {
         }
         return user;
     }
+
+    private User findUserByUserId(String userId){
+        User user = userRepository.findByUserId(userId);
+        if (user == null) {
+            throw new UserNotFoundException("User with username " + userId + " not found");
+        }
+        return user;
+    }
+
+
 }

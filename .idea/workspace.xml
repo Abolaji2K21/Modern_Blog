@@ -5,17 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1990bf40-2be8-488c-a8ec-b4a71196d267" name="Changes" comment="UserTestDone(SomeBody Is After My Life)">
-      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/requests/UpdateUserRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/UpdateUserResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/LoginUserResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/LoginUserResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/LogoutUserResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/LogoutUserResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/RegisterUserResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/RegisterUserResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/utils/Mapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/utils/Mapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/africa/semicolon/services/UserServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/africa/semicolon/services/UserServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/model/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/model/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/CreateCommentResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/CreateCommentResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/CommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/CommentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/africa/semicolon/services/CommentServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/africa/semicolon/services/CommentServiceImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,8 +109,8 @@
       <recent name="africa.semicolon.data.repositories" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserServiceImplTest">
-    <configuration name="PostServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.CommentServiceImplTest.testThatYouCanEditACreatedComment">
+    <configuration name="CommentServiceImplTest.testThatAUserCanOnlyCommentOnACreatedPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Modern_Notes_Management" />
       <extension name="coverage">
         <pattern>
@@ -124,29 +119,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="africa.semicolon.services" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.PostServiceImplTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PostServiceImplTest.testThatAfterSetupUserPostCantBeDeletedByANonRegisterUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Modern_Notes_Management" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="africa.semicolon.services.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="africa.semicolon.services" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.PostServiceImplTest" />
-      <option name="METHOD_NAME" value="testThatAfterSetupUserPostCantBeDeletedByANonRegisterUser" />
+      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.CommentServiceImplTest" />
+      <option name="METHOD_NAME" value="testThatAUserCanOnlyCommentOnACreatedPost" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PostServiceImplTest.testThatAfterSetupUserPostCantBeDeletedByAnotherRegisterUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CommentServiceImplTest.testThatMoreThanOneUserCanCommentOnACreatedPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Modern_Notes_Management" />
       <extension name="coverage">
         <pattern>
@@ -155,14 +135,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="africa.semicolon.services" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.PostServiceImplTest" />
-      <option name="METHOD_NAME" value="testThatAfterSetupUserPostCantBeDeletedByAnotherRegisterUser" />
+      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.CommentServiceImplTest" />
+      <option name="METHOD_NAME" value="testThatMoreThanOneUserCanCommentOnACreatedPost" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PostServiceImplTest.testThatWhenUserGetsPostTheViewIncreases" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CommentServiceImplTest.testThatUserCanCommentOnACreatedPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Modern_Notes_Management" />
       <extension name="coverage">
         <pattern>
@@ -171,8 +151,24 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="africa.semicolon.services" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.PostServiceImplTest" />
-      <option name="METHOD_NAME" value="testThatWhenUserGetsPostTheViewIncreases" />
+      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.CommentServiceImplTest" />
+      <option name="METHOD_NAME" value="testThatUserCanCommentOnACreatedPost" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CommentServiceImplTest.testThatYouCanEditACreatedComment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Modern_Notes_Management" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="africa.semicolon.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="africa.semicolon.services" />
+      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.CommentServiceImplTest" />
+      <option name="METHOD_NAME" value="testThatYouCanEditACreatedComment" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -195,11 +191,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CommentServiceImplTest.testThatYouCanEditACreatedComment" />
+        <item itemvalue="JUnit.CommentServiceImplTest.testThatAUserCanOnlyCommentOnACreatedPost" />
+        <item itemvalue="JUnit.CommentServiceImplTest.testThatMoreThanOneUserCanCommentOnACreatedPost" />
+        <item itemvalue="JUnit.CommentServiceImplTest.testThatUserCanCommentOnACreatedPost" />
         <item itemvalue="JUnit.UserServiceImplTest" />
-        <item itemvalue="JUnit.PostServiceImplTest" />
-        <item itemvalue="JUnit.PostServiceImplTest.testThatWhenUserGetsPostTheViewIncreases" />
-        <item itemvalue="JUnit.PostServiceImplTest.testThatAfterSetupUserPostCantBeDeletedByANonRegisterUser" />
-        <item itemvalue="JUnit.PostServiceImplTest.testThatAfterSetupUserPostCantBeDeletedByAnotherRegisterUser" />
       </list>
     </recent_temporary>
   </component>

@@ -21,7 +21,7 @@ public interface CommentService {
     List<Comment> getCommentsByUser(String postId, String userId);
     CreateCommentResponse createCommentWith(CreateCommentRequest createCommentRequest);
 
-    EditCommentResponse editCommentWith(CreateCommentRequest createCommentRequest);
+    EditCommentResponse editCommentWith(EditCommentRequest editCommentRequest);
 
     DeleteCommentResponse deleteCommentWith(DeleteCommentRequest deleteCommentRequest);
 
