@@ -33,7 +33,7 @@ class ViewServiceImplTest {
     void testThatMyViewCountsIncrease() {
 
         View view = viewService.addViewCount("postId", "userIdOne");
-        Set<String> userIds = view.getUserIds();
+        Set<String> userIds = view.getUserId();
         assertTrue(userIds.contains("userIdOne"));
         assertEquals(1, viewRepository.count());
     }

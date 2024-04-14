@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -37,6 +38,9 @@ class PostServiceImplTest {
     @Autowired
     private ViewRepository viewRepository;
     private RegisterUserResponse response;
+
+    private RegisterUserResponse anotherResponse;
+
 
     @BeforeEach
     public void setUp() {
@@ -63,7 +67,7 @@ class PostServiceImplTest {
         registerRequest.setLastname("Up");
         registerRequest.setUsername("PenIsDown");
         registerRequest.setPassword("Holes");
-        userService.register(registerRequest);
+        anotherResponse = userService.register(registerRequest);
 
         loginRequest = new LoginUserRequest();
         loginRequest.setUsername("PenIsDown");
@@ -83,8 +87,7 @@ class PostServiceImplTest {
         CreatePostResponse createPostResponse = postService.createPostWith(createPostRequest);
         assertEquals("", createPostResponse.getContent());
 
-        User user = userRepository.findByUsername("penisup");
-        assertThat(user.getPosts().size(), is(1));
+        assertThat(postRepository.count(), is(1L));
     }
 
     @Test
@@ -99,39 +102,43 @@ class PostServiceImplTest {
         CreatePostResponse createPostResponse = postService.createPostWith(createPostRequest);
         assertEquals("On a Monday Morning 4am PenIsStillUp", createPostResponse.getTitle());
         assertEquals("You Dont Want To Even Know", createPostResponse.getContent());
-        User user = userRepository.findByUsername("penisup");
-        assertEquals(1, user.getPosts().size());
-        assertThat(user.getPosts().size(), is(1));
+
+        List<Post> posts = postRepository.findByUserId(createPostRequest.getUserId());
+        assertFalse(posts.isEmpty());
+        Post post = posts.get(0);
+        assertEquals("On a Monday Morning 4am PenIsStillUp", post.getTitle());
+
 
     }
 
     @Test
-    void testThatAfterSetupUserCanCreatMultiplePost() {
+    void testThatAfterSetupUserCanCreateMultiplePosts() {
         assertTrue(userRepository.existsByUsername("penisup"));
 
         CreatePostRequest createPostRequest = new CreatePostRequest();
         createPostRequest.setUserId(response.getUserId());
         createPostRequest.setTitle("On a Monday Morning 4am PenIsStillUp");
         createPostRequest.setContent("You Dont Want To Even Know");
-
         CreatePostResponse createPostResponse = postService.createPostWith(createPostRequest);
+
         assertEquals("On a Monday Morning 4am PenIsStillUp", createPostResponse.getTitle());
         assertEquals("You Dont Want To Even Know", createPostResponse.getContent());
 
-        CreatePostRequest createPostRequestOne = new CreatePostRequest();
-        createPostRequest.setUserId(response.getUserId());
-        createPostRequestOne.setTitle("On a Monday Morning 4:30am PenIsStillUp");
-        createPostRequestOne.setContent("You Dont Want To Even Know");
+        CreatePostRequest createPostRequestTwo = new CreatePostRequest();
+        createPostRequestTwo.setUserId(response.getUserId());
+        createPostRequestTwo.setTitle("On a Monday Morning 4:30am PenIsStillUp");
+        createPostRequestTwo.setContent("You Dont Want To Even Know");
+        CreatePostResponse createPostResponseTwo = postService.createPostWith(createPostRequestTwo);
 
-        CreatePostResponse createPostResponseOne = postService.createPostWith(createPostRequestOne);
-        assertEquals("On a Monday Morning 4:30am PenIsStillUp", createPostResponseOne.getTitle());
-        assertEquals("You Dont Want To Even Know", createPostResponseOne.getContent());
+        assertEquals("On a Monday Morning 4:30am PenIsStillUp", createPostResponseTwo.getTitle());
+        assertEquals("You Dont Want To Even Know", createPostResponseTwo.getContent());
+
         User user = userRepository.findByUsername("penisup");
+        List<Post> userPosts = postRepository.findByUserId(user.getUserId());
 
-        assertEquals(2, user.getPosts().size());
-        assertThat(user.getPosts().size(), is(2));
-
+        assertEquals(2, userPosts.size());
     }
+
 
     @Test
     void testThatAfterSetupUserCanEditACreatedPost() {
@@ -144,19 +151,18 @@ class PostServiceImplTest {
         CreatePostResponse createPostResponse = postService.createPostWith(createPostRequest);
 
         EditPostRequest editPostRequest = new EditPostRequest();
-        editPostRequest.setUserId(response.getUserId());
+        editPostRequest.setUserId(createPostRequest.getUserId());
         editPostRequest.setPostId(createPostResponse.getPostId());
-        editPostRequest.setTitle("Edited Title");
-        editPostRequest.setContent("Edited Content");
+        editPostRequest.setTitle("On a Monday Morning 4:30am PenIsStillUp");
+        editPostRequest.setContent("You Still Dont Want To Even Know");
         postService.edit(editPostRequest);
 
-        User foundUser = userRepository.findByUsername("penisup");
-        Post updatedPost = foundUser.getPosts().getFirst();
-        assertEquals(1, foundUser.getPosts().size());
-        assertTrue(updatedPost.getTitle().contains("Edited Title"));
-        assertTrue(updatedPost.getContent().contains("Edited Content"));
-
+        Post updatedPost = postRepository.findByPostId(createPostResponse.getPostId()).orElseThrow();
+        assertNotNull(updatedPost);
+        assertEquals("On a Monday Morning 4:30am PenIsStillUp", updatedPost.getTitle());
+        assertEquals("You Still Dont Want To Even Know", updatedPost.getContent());
     }
+
 
     @Test
     void testThatAfterSetupUserCantEditANonCreatedPost() {
@@ -180,9 +186,7 @@ class PostServiceImplTest {
             assertEquals("Post not found", message.getMessage());
 
         }
-        assertThat(userRepository.findByUsername("penisup").getPosts().size(), is(1));
-
-
+        assertFalse(postRepository.existsById(editPostRequest.getPostId()));
     }
 
     @Test
@@ -198,20 +202,20 @@ class PostServiceImplTest {
         RegisterUserRequest registerRequest = new RegisterUserRequest();
         registerRequest.setFirstname("PenIs");
         registerRequest.setLastname("Dowp");
-        registerRequest.setUsername("PenIsDown");
+        registerRequest.setUsername("penisupagain");
         registerRequest.setPassword("NoHoles");
-        userService.register(registerRequest);
+        RegisterUserResponse responseOne = userService.register(registerRequest);
 
         LoginUserRequest loginRequest = new LoginUserRequest();
-        loginRequest.setUsername("PenIsDown");
+        loginRequest.setUsername("penisupagain");
         loginRequest.setPassword("NoHoles");
         LoginUserResponse loginResponse = userService.login(loginRequest);
-        assertThat(loginResponse.getUsername(), is("penisdown"));
-        assertTrue(userRepository.existsByUsername("penisdown"));
+        assertThat(loginResponse.getUsername(), is("penisupagain"));
+        assertTrue(userRepository.existsByUsername("penisupagain"));
 
 
         EditPostRequest editPostRequest = new EditPostRequest();
-        editPostRequest.setUserId(response.getUserId());
+        editPostRequest.setUserId(responseOne.getUserId());
         editPostRequest.setPostId(createPostResponse.getPostId());
         editPostRequest.setTitle("Edited Title");
         editPostRequest.setContent("Edited Content");
@@ -222,8 +226,10 @@ class PostServiceImplTest {
             assertEquals("Post does not belong to user", message.getMessage());
 
         }
-        assertThat(userRepository.findByUsername("penisup").getPosts().size(), is(1));
-        assertThat(userRepository.findByUsername("penisdown").getPosts().size(), is(0));
+        Optional<Post> optionalPost = postRepository.findByPostId(createPostResponse.getPostId());
+        assertTrue(optionalPost.isPresent());
+        assertEquals("On a Monday Morning 4am PenIsStillUp", optionalPost.get().getTitle());
+        assertEquals("You Dont Want To Even Know", optionalPost.get().getContent());
 
 
     }
@@ -238,22 +244,19 @@ class PostServiceImplTest {
         createPostRequest.setTitle("On a Monday Morning 4am PenIsStillUp");
         createPostRequest.setContent("You Dont Want To Even Know");
         CreatePostResponse createPostResponse = postService.createPostWith(createPostRequest);
-//        assertEquals(1, user.getPosts().size());
-        assertThat(userRepository.findByUsername("penisup").getPosts().size(), is(1));
+
+        assertThat(postRepository.count(), is(1L));
 
         DeletePostRequest deletePostRequest = new DeletePostRequest();
-        deletePostRequest.setUserId(createPostResponse.);
+        deletePostRequest.setUserId(response.getUserId());
         deletePostRequest.setPostId(createPostResponse.getPostId());
         postService.delete(deletePostRequest);
+
         assertFalse(postRepository.existsById(createPostResponse.getPostId()));
-//        System.out.println("User's list of posts before deletion: " + user.getPosts());
-//        User user =userRepository.findByUsername("penisup");
-        assertThat(userRepository.findByUsername("penisup").getPosts().size(), is(0));
     }
 
-
     @Test
-    void testThatAfterSetupUserPostCantBeDeletedByARegisterUser() {
+    void testThatAfterSetupUserPostCantBeDeletedByAnotherRegisterUser() {
         assertTrue(userRepository.existsByUsername("penisup"));
 
         CreatePostRequest createPostRequest = new CreatePostRequest();
@@ -261,32 +264,32 @@ class PostServiceImplTest {
         createPostRequest.setTitle("On a Monday Morning 4am PenIsStillUp");
         createPostRequest.setContent("You Dont Want To Even Know");
         CreatePostResponse createPostResponse = postService.createPostWith(createPostRequest);
-        assertThat(userRepository.findByUsername("penisup").getPosts().size(), is(1));
+
+        assertThat(postRepository.count(), is(1L));
 
         RegisterUserRequest registerRequest = new RegisterUserRequest();
         registerRequest.setFirstname("PenIs");
         registerRequest.setLastname("Dowp");
-        registerRequest.setUsername("PenIsDown");
+        registerRequest.setUsername("penisdownagain");
         registerRequest.setPassword("NoHoles");
-        userService.register(registerRequest);
+        RegisterUserResponse registerUserResponse = userService.register(registerRequest);
 
         LoginUserRequest loginRequest = new LoginUserRequest();
-        loginRequest.setUsername("PenIsDown");
+        loginRequest.setUsername("penisdownagain");
         loginRequest.setPassword("NoHoles");
         LoginUserResponse loginResponse = userService.login(loginRequest);
-        assertThat(loginResponse.getUsername(), is("penisdown"));
+        assertThat(loginResponse.getUsername(), is("penisdownagain"));
 
         DeletePostRequest deletePostRequest = new DeletePostRequest();
-        deletePostRequest.setUserId(response.getUserId());
+        deletePostRequest.setUserId(registerUserResponse.getUserId());
         deletePostRequest.setPostId(createPostResponse.getPostId());
         try {
             postService.delete(deletePostRequest);
         } catch (BigBlogException message) {
             assertEquals("You are not authorized to delete this post", message.getMessage());
-
         }
-        assertThat(userRepository.findByUsername("penisup").getPosts().size(), is(1));
 
+        assertThat(postRepository.count(), is(1L));
     }
 
     @Test
@@ -294,14 +297,15 @@ class PostServiceImplTest {
         assertTrue(userRepository.existsByUsername("penisup"));
 
         CreatePostRequest createPostRequest = new CreatePostRequest();
-        createPostRequest.setUsername("penisup");
+        createPostRequest.setUserId(response.getUserId());
         createPostRequest.setTitle("On a Monday Morning 4am PenIsStillUp");
         createPostRequest.setContent("You Dont Want To Even Know");
         CreatePostResponse createPostResponse = postService.createPostWith(createPostRequest);
-        assertThat(userRepository.findByUsername("penisup").getPosts().size(), is(1));
+
+        assertThat(postRepository.count(), is(1L));
 
         DeletePostRequest deletePostRequest = new DeletePostRequest();
-        deletePostRequest.setUsername("penisdown");
+        deletePostRequest.setUserId("penisdown");
         deletePostRequest.setPostId(createPostResponse.getPostId());
         try {
             postService.delete(deletePostRequest);
@@ -309,13 +313,13 @@ class PostServiceImplTest {
             assertEquals("User with username penisdown not found", message.getMessage());
 
         }
-        assertThat(userRepository.findByUsername("penisup").getPosts().size(), is(1));
+        assertThat(postRepository.count(), is(1L));
 
     }
 
 
     @Test
-    public void testThatWhenIGetPostTheViewIncrease() {
+    public void testThatWhenUserGetsPostTheViewIncreases() {
         assertTrue(userRepository.existsByUsername("penisup"));
 
         CreatePostRequest createPostRequest = new CreatePostRequest();
@@ -328,9 +332,9 @@ class PostServiceImplTest {
 
         ActivitiesResponse activitiesResponse = postService.getPost(createPostResponse.getPostId(), "penisdown");
 
-        Set<String> stringSet = activitiesResponse.getView().getUserId();
-        assertTrue(stringSet.contains(response.getUserId()));
+        Set<String> userIdsInView = activitiesResponse.getView().getUserId();
+        assertTrue(userIdsInView.contains(anotherResponse.getUserId()));
+
         assertEquals(1, viewRepository.count());
     }
-
 }

@@ -24,7 +24,7 @@ public class Mapper {
     public static RegisterUserResponse map(User user){
         RegisterUserResponse registerUserResponse = new RegisterUserResponse();
         registerUserResponse.setUsername(user.getUsername());
-        registerUserResponse.setId(user.getId());
+        registerUserResponse.setUserId(user.getUserId());
         registerUserResponse.setDateRegistered(DateTimeFormatter.ofPattern("dd-MM-yyyy, hh:mm:ss").format(user.getDateCreated()));
         return registerUserResponse;
     }

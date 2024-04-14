@@ -42,11 +42,10 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public CreatePostResponse createPostWith(CreatePostRequest createPostRequest) {
-        findUserBy(createPostRequest.getUserId());
+        User user = findUserByUserId(createPostRequest.getUserId());
         Post newPost = new Post();
         BeanUtils.copyProperties(createPostRequest, newPost);
         newPost.setDateTimeCreated(LocalDateTime.now());
-
         postRepository.save(newPost);
 
         CreatePostResponse response = new CreatePostResponse();
@@ -65,7 +64,7 @@ public class PostServiceImpl implements PostService {
     @Override
     public ActivitiesResponse getPost(String postId, String username) {
         User user = findUserBy(username);
-        Post post = postRepository.findById(postId).orElseThrow();
+        Post post = postRepository.findByPostId(postId).orElseThrow();
         View view = null;
         if (!user.getUserId().equals(post.getUserId())) {
             view = viewService.addViewCount(postId, user.getUserId());
@@ -100,7 +99,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public EditPostResponse edit(EditPostRequest editPostRequest) {
-        User user = findUserBy(editPostRequest.getUserId());
+        User user = findUserByUserId(editPostRequest.getUserId());
         Post post = postRepository.findById(editPostRequest.getPostId())
                 .orElseThrow(() -> new PostNotFoundException("Post not found"));
 

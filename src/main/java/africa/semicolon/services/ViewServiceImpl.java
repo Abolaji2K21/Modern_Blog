@@ -17,7 +17,7 @@ public class ViewServiceImpl implements ViewService{
             view = new View();
             view.setPostId(postId);
         }
-        view.getUserIds().add(userId);
+        view.getUserId().add(userId);
        return viewRepository.save(view);
     }
 
