@@ -5,11 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1990bf40-2be8-488c-a8ec-b4a71196d267" name="Changes" comment="UserTestDone(SomeBody Is After My Life)">
+      <change afterPath="$PROJECT_DIR$/src/test/java/africa/semicolon/services/ViewServiceImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/DeletePostResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/DeletePostResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/model/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/model/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/model/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/model/Post.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/model/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/model/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/repositories/CommentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/repositories/CommentRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/repositories/PostRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/repositories/PostRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/data/repositories/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/requests/CreateCommentRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/requests/CreateCommentRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/requests/CreatePostRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/requests/CreatePostRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/requests/DeleteCommentRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/requests/DeleteCommentRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/requests/DeletePostRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/requests/DeletePostRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/requests/EditCommentRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/requests/EditCommentRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/requests/EditPostRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/requests/EditPostRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/requests/ViewPostRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/requests/ViewPostRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/ApiResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/ApiResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/CreateCommentResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/CreateCommentResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/DeleteCommentResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/DeleteCommentResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/EditCommentResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/EditCommentResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/LoginUserResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/LoginUserResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/LogoutUserResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/LogoutUserResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/RegisterUserResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/dtos/responds/RegisterUserResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/CommentServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/PostServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/services/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/africa/semicolon/utils/Mapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/africa/semicolon/utils/Mapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/africa/semicolon/services/CommentServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/africa/semicolon/services/CommentServiceImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/africa/semicolon/services/PostServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/africa/semicolon/services/PostServiceImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,8 +45,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -81,7 +105,7 @@
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/DELL/Morden_Blog&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/DELL/IdeaProjects/Morden_Notes_Management&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -109,57 +133,9 @@
       <recent name="africa.semicolon.data.repositories" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PostServiceImplTest">
-    <configuration name="CommentServiceImplTest.testThatAUserCanOnlyCommentOnACreatedPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Morden_Blog" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="africa.semicolon.services.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="africa.semicolon.services" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.CommentServiceImplTest" />
-      <option name="METHOD_NAME" value="testThatAUserCanOnlyCommentOnACreatedPost" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CommentServiceImplTest.testThatMoreThanOneUserCanCommentOnACreatedPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Morden_Blog" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="africa.semicolon.services.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="africa.semicolon.services" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.CommentServiceImplTest" />
-      <option name="METHOD_NAME" value="testThatMoreThanOneUserCanCommentOnACreatedPost" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CommentServiceImplTest.testThatYouCanEditACreatedComment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Morden_Blog" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="africa.semicolon.services.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="africa.semicolon.services" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.CommentServiceImplTest" />
-      <option name="METHOD_NAME" value="testThatYouCanEditACreatedComment" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PostServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Morden_Blog" />
+  <component name="RunManager" selected="JUnit.PostServiceImplTest.testThatWhenIGetPostTheViewIncrease">
+    <configuration name="PostServiceImplTest.testThatWhenIGetPostTheViewIncrease" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Modern_Notes_Management" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="africa.semicolon.services.*" />
@@ -168,13 +144,45 @@
       </extension>
       <option name="PACKAGE_NAME" value="africa.semicolon.services" />
       <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.PostServiceImplTest" />
+      <option name="METHOD_NAME" value="testThatWhenIGetPostTheViewIncrease" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PostServiceImplTest.testView" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Modern_Notes_Management" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="africa.semicolon.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="africa.semicolon.services" />
+      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.PostServiceImplTest" />
+      <option name="METHOD_NAME" value="testView" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Modern_Blog" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="africa.semicolon.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="africa.semicolon.services" />
+      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.UserServiceImplTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PostServiceImplTest.testThatAfterSetupUserCantEditANonCreatedPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Morden_Blog" />
+    <configuration name="ViewServiceImplTest.testThatAfterSetupUserCanCreatAPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Modern_Notes_Management" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="africa.semicolon.services.*" />
@@ -182,8 +190,24 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="africa.semicolon.services" />
-      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.PostServiceImplTest" />
-      <option name="METHOD_NAME" value="testThatAfterSetupUserCantEditANonCreatedPost" />
+      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.ViewServiceImplTest" />
+      <option name="METHOD_NAME" value="testThatAfterSetupUserCanCreatAPost" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ViewServiceImplTest.testThatMy" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Modern_Notes_Management" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="africa.semicolon.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="africa.semicolon.services" />
+      <option name="MAIN_CLASS_NAME" value="africa.semicolon.services.ViewServiceImplTest" />
+      <option name="METHOD_NAME" value="testThatMy" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -191,11 +215,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PostServiceImplTest" />
-        <item itemvalue="JUnit.PostServiceImplTest.testThatAfterSetupUserCantEditANonCreatedPost" />
-        <item itemvalue="JUnit.CommentServiceImplTest.testThatYouCanEditACreatedComment" />
-        <item itemvalue="JUnit.CommentServiceImplTest.testThatAUserCanOnlyCommentOnACreatedPost" />
-        <item itemvalue="JUnit.CommentServiceImplTest.testThatMoreThanOneUserCanCommentOnACreatedPost" />
+        <item itemvalue="JUnit.PostServiceImplTest.testThatWhenIGetPostTheViewIncrease" />
+        <item itemvalue="JUnit.ViewServiceImplTest.testThatMy" />
+        <item itemvalue="JUnit.PostServiceImplTest.testView" />
+        <item itemvalue="JUnit.ViewServiceImplTest.testThatAfterSetupUserCanCreatAPost" />
+        <item itemvalue="JUnit.UserServiceImplTest" />
       </list>
     </recent_temporary>
   </component>
@@ -215,7 +239,10 @@
       <workItem from="1711841710663" duration="2045000" />
       <workItem from="1711844079589" duration="20419000" />
       <workItem from="1712038796482" duration="22544000" />
-      <workItem from="1712155831084" duration="9170000" />
+      <workItem from="1712155831084" duration="10020000" />
+      <workItem from="1712173501319" duration="2582000" />
+      <workItem from="1712236288617" duration="1611000" />
+      <workItem from="1713088746743" duration="12465000" />
     </task>
     <task id="LOCAL-00001" summary="STILL PUSHING">
       <option name="closed" value="true" />
@@ -401,7 +428,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712088087717</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="UserTestDone(SomeBody Is After My Life)">
+      <option name="closed" value="true" />
+      <created>1712167318303</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1712167318303</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

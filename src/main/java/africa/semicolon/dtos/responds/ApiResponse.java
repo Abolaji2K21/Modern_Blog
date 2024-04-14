@@ -9,7 +9,7 @@ import org.springframework.validation.ObjectError;
 public class ApiResponse {
 
     boolean isSuccessful;
-    Object registerUserResponse;
+    Object data;
 //    Object createUserResponse;
 //    Object createCommentResponse;
 

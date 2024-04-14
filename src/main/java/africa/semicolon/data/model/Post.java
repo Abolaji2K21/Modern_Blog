@@ -13,7 +13,7 @@ import java.util.List;
 @Document("Posts")
 public class Post {
     @Id
-    private String id;
+    private String postId;
     private String title;
     private String content;
     private LocalDateTime dateTimeCreated;

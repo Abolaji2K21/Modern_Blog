@@ -15,5 +15,5 @@ public interface UserService {
     RegisterUserResponse register(RegisterUserRequest registerUserRequest);
     LoginUserResponse login(LoginUserRequest loginRequest);
     LogoutUserResponse logout(LogoutUserRequest logoutRequest);
-    User findUserBy(String username);
+    User findUserBy(String userId);
 }

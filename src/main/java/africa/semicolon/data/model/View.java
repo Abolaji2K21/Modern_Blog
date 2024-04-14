@@ -14,8 +14,8 @@ import java.util.Set;
 @Document("Views")
 public class View {
     @Id
-    private String id;
+    private String viewId;
     private String postId;
-    private Set<String> userIds;
+    private Set<String> userId = new HashSet<>();
     private LocalDateTime timeOfView = LocalDateTime.now();
 }

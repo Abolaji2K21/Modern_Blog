@@ -37,35 +37,31 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public List<Comment> getCommentBy(String postId){
-        Post post = postRepository.findById(postId).orElseThrow(()-> new PostNotFoundException("Post not found")) ;
-        return  commentRepository.findByPostId(post.getId());
+        Post post = postRepository.findByPostId(postId).orElseThrow(()-> new PostNotFoundException("Post not found")) ;
+        return  commentRepository.findByPostId(post.getPostId());
     }
 
     @Override
     public List<Comment> getCommentsByUser(String postId, String userId){
         User user = userRepository.findById(userId).orElseThrow(()-> new UserNotFoundException("User not found"));
-        Post post = postRepository.findById(postId).orElseThrow(()-> new PostNotFoundException("Post not found")) ;
-        return  commentRepository.findByPostId(post.getId());
+        Post post = postRepository.findByPostId(postId).orElseThrow(()-> new PostNotFoundException("Post not found")) ;
+        return  commentRepository.findByPostId(post.getPostId());
     }
 
 
     @Override
     public CreateCommentResponse createCommentWith(CreateCommentRequest createCommentRequest) {
-        User user = findUserBy(createCommentRequest.getUsername());
+        findUserBy(createCommentRequest.getUserId());
 
-        Post post = postRepository.findById(createCommentRequest.getPostId())
+        postRepository.findByPostId(createCommentRequest.getPostId())
                 .orElseThrow(() -> new PostNotFoundException("Post not found"));
 
         Comment newComment = new Comment();
-        newComment.setUserId(user.getId());
-        newComment.setPost(post);
-        newComment.setComment(createCommentRequest.getContent());
+        BeanUtils.copyProperties(createCommentRequest,newComment);
         commentRepository.save(newComment);
 
         CreateCommentResponse response = new CreateCommentResponse();
-        response.setPostId(post.getId());
-        response.setContent(newComment.getComment());
-        response.setUsername(user.getUsername());
+        BeanUtils.copyProperties(newComment, response);
         return response;
     }
 
@@ -76,38 +72,34 @@ public class CommentServiceImpl implements CommentService {
                 .orElseThrow(() -> new PostNotFoundException("Post not found"));
 
 
-        Comment comment = commentRepository.findByPostAndUserId(post, createCommentRequest.getUsername())
+        Comment comment = commentRepository.findByPostIdAndUserId(createCommentRequest.getPostId(), createCommentRequest.getUserId())
                 .orElseThrow(() -> new BigBlogException("Comment not found for postId: "));
 
 
-        if (!createCommentRequest.getUsername().equals(comment.getUserId())) {
+        if (!createCommentRequest.getUserId().equals(comment.getUserId())) {
             throw new UserNotFoundException("User does not have permission to edit this comment");
         }
 
-        comment.setComment(createCommentRequest.getContent());
-
+        comment.setComment(createCommentRequest.getComment());
         commentRepository.save(comment);
-
         EditCommentResponse response = new EditCommentResponse();
-        response.setPostId(post.getId());
-        response.setContent(comment.getComment());
-        response.setUsername(comment.getUserId());
-
+        BeanUtils.copyProperties(comment, response);
         return response;
     }
 
     @Override
     public DeleteCommentResponse deleteCommentWith(DeleteCommentRequest deleteCommentRequest) {
-        User user = findUserBy(deleteCommentRequest.getUsername());
+        User user = findUserBy(deleteCommentRequest.getUserId());
         Comment comment = commentRepository.findById(deleteCommentRequest.getCommentId())
                 .orElseThrow(() -> new BigBlogException("Comment not found"));
 
-        if (!user.getId().equals(comment.getUserId())) {
+        if (!user.getUserId().equals(comment.getUserId())) {
             throw new UserNotFoundException("You are not authorized to delete this post");
         }
-        Post post = comment.getPost();
-        post.getComments().remove(comment);
-        postRepository.save(post);
+
+        Optional<Post> post = postRepository.findByPostId(comment.getPostId());
+        post.get().getComments().remove(comment);
+        postRepository.save(post.get());
         commentRepository.delete(comment);
         return new DeleteCommentResponse();
     }

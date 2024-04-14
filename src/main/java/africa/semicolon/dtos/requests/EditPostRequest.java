@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class EditPostRequest {
     private String postId;
-    private String username;
+    private String userId;
     private String title;
     private String content;
 }

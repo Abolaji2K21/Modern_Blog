@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 
 @Data
 public class LoginUserResponse {
-    private final String id;
+    private final String userId;
     private final String username;
 
 

@@ -42,21 +42,15 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public CreatePostResponse createPostWith(CreatePostRequest createPostRequest) {
-        User foundUser = findUserBy(createPostRequest.getUsername());
+        findUserBy(createPostRequest.getUserId());
         Post newPost = new Post();
-
         BeanUtils.copyProperties(createPostRequest, newPost);
         newPost.setDateTimeCreated(LocalDateTime.now());
-        newPost.setUserId(foundUser.getId());
 
-        Post mypost = postRepository.save(newPost);
-        foundUser.getPosts().add(mypost);
-        userRepository.save(foundUser);
-
+        postRepository.save(newPost);
 
         CreatePostResponse response = new CreatePostResponse();
         BeanUtils.copyProperties(newPost, response);
-        response.setPostId(newPost.getId());
         response.setDateCreated(newPost.getDateTimeCreated().toString());
         return response;
     }
@@ -64,7 +58,7 @@ public class PostServiceImpl implements PostService {
     @Override
     public List<Post> getUserPost(String username) {
         User user = userRepository.findByUsername(username);
-        return postRepository.findByUserId(user.getId());
+        return postRepository.findByUserId(user.getUserId());
 
     }
 
@@ -73,8 +67,8 @@ public class PostServiceImpl implements PostService {
         User user = findUserBy(username);
         Post post = postRepository.findById(postId).orElseThrow();
         View view = null;
-        if (!user.getId().equals(post.getUserId())) {
-            view = viewService.addViewCount(postId, user.getId());
+        if (!user.getUserId().equals(post.getUserId())) {
+            view = viewService.addViewCount(postId, user.getUserId());
         }
         List<Comment> comments = commentService.getCommentBy(postId);
         ActivitiesResponse activitiesResponse = new ActivitiesResponse();
@@ -86,28 +80,16 @@ public class PostServiceImpl implements PostService {
     }
 
 
+
     @Override
     public List<ActivitiesResponse> getAllPosts() {
-        // stream api
-//        List<PostDto> postDtoList = new ArrayList<>();
-//        postRepository.findAll().forEach(post -> {
-//            PostDto postDto = new PostDto();
-//            List<Comment> comments = commentService.getCommentBy(post.getId());
-//            View view = viewService.getByPostId(post.getId());
-//            post.setComments(comments);
-//            postDto.setView(view);
-//            postDto.setPost(post);
-//            postDtoList.add(postDto);
-//        });
-//        return postDtoList;
 
-        // for loop
         List<ActivitiesResponse> activitiesResponseList = new ArrayList<>();
         List<Post> posts = postRepository.findAll();
         for (Post post : posts) {
             ActivitiesResponse activitiesResponse = new ActivitiesResponse();
-            List<Comment> comments = commentService.getCommentBy(post.getId());
-            View view = viewService.getByPostId(post.getId());
+            List<Comment> comments = commentService.getCommentBy(post.getPostId());
+            View view = viewService.getByPostId(post.getPostId());
             post.setComments(comments);
             activitiesResponse.setView(view);
             activitiesResponse.setPost(post);
@@ -118,11 +100,11 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public EditPostResponse edit(EditPostRequest editPostRequest) {
-        User user = findUserBy(editPostRequest.getUsername());
+        User user = findUserBy(editPostRequest.getUserId());
         Post post = postRepository.findById(editPostRequest.getPostId())
                 .orElseThrow(() -> new PostNotFoundException("Post not found"));
 
-        if (!user.getId().equals(post.getUserId())) {
+        if (!user.getUserId().equals(post.getUserId())) {
             throw new UserNotFoundException("Post does not belong to user");
         }
 
@@ -139,12 +121,9 @@ public class PostServiceImpl implements PostService {
 
         post.setDateTimeUpdated(LocalDateTime.now());
         postRepository.save(post);
-
         EditPostResponse response = new EditPostResponse();
         BeanUtils.copyProperties(post, response);
-        response.setPostId(post.getId());
         response.setDateCreated(post.getDateTimeCreated().toString());
-
         return response;
     }
 
@@ -152,13 +131,11 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public DeletePostResponse delete(DeletePostRequest deletePostRequest) {
-        User user = findUserBy(deletePostRequest.getUsername());
+        User user = findUserByUserId(deletePostRequest.getUserId());
         Post post = postRepository.findById(deletePostRequest.getPostId()).orElseThrow(() -> new PostNotFoundException("post not found"));
-        if (!post.getUserId().equals(user.getId())) {
+        if (!post.getUserId().equals(user.getUserId())) {
             throw new BigBlogException("You are not authorized to delete this post");
         }
-        user.getPosts().remove(post);
-        userRepository.save(user);
         postRepository.delete(post);
         return new DeletePostResponse();
     }
@@ -170,5 +147,13 @@ public class PostServiceImpl implements PostService {
             throw new UserNotFoundException("User with username " + username + " not found");
         }
         return user;
+    }
+    private  User findUserByUserId(String userId){
+        User user = userRepository.findByUserId(userId);
+        if (user == null) {
+            throw new UserNotFoundException("User with username " + userId + " not found");
+        }
+        return user;
+
     }
 }

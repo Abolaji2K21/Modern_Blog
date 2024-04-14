@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
             throw new InvalidPassCodeException("Invalid password for user " + username);
         }
 
-        return new LoginUserResponse(user.getId(), user.getUsername().toLowerCase());    }
+        return new LoginUserResponse(user.getUserId(), user.getUsername().toLowerCase());    }
 
     @Override
     public LogoutUserResponse logout(LogoutUserRequest logoutUserRequest) {
@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService {
         if (user == null) {
             throw new UserNotFoundException("User with username " + username + " not found");
         } else {
-            return new LogoutUserResponse(user.getId(), user.getUsername());
+            return new LogoutUserResponse(user.getUserId(), user.getUsername());
         }
     }
 
@@ -72,6 +72,8 @@ public class UserServiceImpl implements UserService {
         }
         return user;
     }
+
+
 
 
     private void validate(String username) {

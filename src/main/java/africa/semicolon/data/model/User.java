@@ -14,13 +14,11 @@ import java.util.List;
 @Document("Users")
 public class User {
     @Id
-    private String id;
+    private String userId;
     private String firstName;
     private String lastName;
     private String username;
     private String password;
-    @DBRef
-    private List<Post> posts = new ArrayList<>();
     private LocalDateTime dateCreated = LocalDateTime.now();
 
 

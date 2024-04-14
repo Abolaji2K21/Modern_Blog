@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class CreatePostRequest {
-    private String username;
+    private String userId;
     private String title;
     private String content;
 }
