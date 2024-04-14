@@ -21,7 +21,7 @@ public class ViewServiceImpl implements ViewService{
        return viewRepository.save(view);
     }
 
-    public View getByPostId(String id) {
-        return viewRepository.findByPostId(id);
+    public View getByPostId(String postId) {
+        return viewRepository.findByPostId(postId);
     }
 }
