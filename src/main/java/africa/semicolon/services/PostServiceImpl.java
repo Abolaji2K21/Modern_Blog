@@ -78,8 +78,6 @@ public class PostServiceImpl implements PostService {
 
     }
 
-
-
     @Override
     public List<ActivitiesResponse> getAllPosts() {
 

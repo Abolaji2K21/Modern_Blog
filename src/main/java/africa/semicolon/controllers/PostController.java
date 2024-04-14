@@ -14,8 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import static org.springframework.http.HttpStatus.BAD_REQUEST;
-import static org.springframework.http.HttpStatus.CREATED;
+import static org.springframework.http.HttpStatus.*;
 
 @RestController
 @RequestMapping("/post")
@@ -25,7 +24,7 @@ public class PostController {
     private PostService postService;
 
     @PostMapping
-    public ResponseEntity<?> addPost(@RequestBody CreatePostRequest createPostRequest) {
+    public ResponseEntity<?> createPost(@RequestBody CreatePostRequest createPostRequest) {
         try {
             CreatePostResponse createPostResponse = postService.createPostWith(createPostRequest);
             return new ResponseEntity<>(createPostResponse, CREATED);
@@ -55,4 +54,33 @@ public class PostController {
             return new ResponseEntity<>(new ApiResponse(false, message.getMessage()), BAD_REQUEST);
         }
     }
+
+    @GetMapping("/{postId}/{username}")
+    public ResponseEntity<?> getPost(@PathVariable(name = "postId") String postId, @PathVariable(name = "username") String username) {
+        try {
+            var post = postService.getPost(postId,username);
+            if (post != null) {
+                return new ResponseEntity<>(new ApiResponse(true, post), OK);
+            } else {
+                return new ResponseEntity<>(new ApiResponse(false, "Post not found"), HttpStatus.NOT_FOUND);
+            }
+        } catch (BigBlogException message) {
+            return new ResponseEntity<>(new ApiResponse(false, message.getMessage()), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping("/getAllPosts")
+    public ResponseEntity<?> getAllPosts() {
+        try {
+            var posts = postService.getAllPosts();
+            if (!posts.isEmpty()) {
+                return new ResponseEntity<>(new ApiResponse(true, posts), OK);
+            } else {
+                return new ResponseEntity<>(new ApiResponse(false, "No posts found"),NOT_FOUND);
+            }
+        } catch (BigBlogException message) {
+            return new ResponseEntity<>(new ApiResponse(false, message.getMessage()),BAD_REQUEST);
+        }
+    }
+
 }

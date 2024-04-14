@@ -337,4 +337,63 @@ class PostServiceImplTest {
 
         assertEquals(1, viewRepository.count());
     }
+
+    @Test
+    void testThatAfterSetupUserCanGetAllPosts() {
+        assertTrue(userRepository.existsByUsername("penisup"));
+
+        CreatePostRequest createPostRequest1 = new CreatePostRequest();
+        createPostRequest1.setUserId(response.getUserId());
+        createPostRequest1.setTitle("Post 1");
+        createPostRequest1.setContent("Content for post 1");
+        postService.createPostWith(createPostRequest1);
+
+        CreatePostRequest createPostRequest2 = new CreatePostRequest();
+        createPostRequest2.setUserId(response.getUserId());
+        createPostRequest2.setTitle("Post 2");
+        createPostRequest2.setContent("Content for post 2");
+        postService.createPostWith(createPostRequest2);
+
+        List<ActivitiesResponse> allPosts = postService.getAllPosts();
+
+        assertEquals(2, allPosts.size());
+    }
+
+    @Test
+    void testThatAfterSetupUserCanGetUserPosts() {
+        assertTrue(userRepository.existsByUsername("penisup"));
+
+        CreatePostRequest createPostRequest1 = new CreatePostRequest();
+        createPostRequest1.setUserId(response.getUserId());
+        createPostRequest1.setTitle("Post 1");
+        createPostRequest1.setContent("Content for post 1");
+        postService.createPostWith(createPostRequest1);
+
+        CreatePostRequest createPostRequest2 = new CreatePostRequest();
+        createPostRequest2.setUserId(response.getUserId());
+        createPostRequest2.setTitle("Post 2");
+        createPostRequest2.setContent("Content for post 2");
+        postService.createPostWith(createPostRequest2);
+
+        List<Post> userPosts = postService.getUserPost("penisup");
+
+        assertEquals(2, userPosts.size());
+    }
+
+    @Test
+    void testThatAfterSetupUserCanGetPost() {
+        assertTrue(userRepository.existsByUsername("penisup"));
+
+        CreatePostRequest createPostRequest = new CreatePostRequest();
+        createPostRequest.setUserId(response.getUserId());
+        createPostRequest.setTitle("Test Post");
+        createPostRequest.setContent("This is a test post.");
+        CreatePostResponse createPostResponse = postService.createPostWith(createPostRequest);
+
+        ActivitiesResponse activitiesResponse = postService.getPost(createPostResponse.getPostId(), "penisdown");
+
+        assertEquals("Test Post", activitiesResponse.getPost().getTitle());
+        assertEquals("This is a test post.", activitiesResponse.getPost().getContent());
+    }
+
 }
